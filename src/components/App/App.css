@@ -1,0 +1,234 @@
+.page {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background-color: rgba(32, 32, 32, 1);
+  }
+
+.page__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(32, 32, 32, 1);
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    .page__container {
+      margin: 0;
+    }
+  }
+
+.title {
+    margin: 0 70px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid #DADADA;
+    max-width: 1140px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+}
+
+@media (max-width: 768px) {
+    .title {
+        margin: 0 50px;
+        margin-bottom: 70px;
+        max-width: 668px;
+    }
+}
+
+@media (max-width: 560px) {
+    .title {
+        margin: 0 14px;
+        margin-bottom: 70px;
+        max-width: 668px;
+        border-bottom: 1px solid #000;
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+}
+
+.form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 396px;
+    height: 100vh;
+
+}
+
+@media (max-width: 450px) {
+    .form {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+.form__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    color: #8B8B8B;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.form__input {
+    margin-top: 5px;
+    margin-bottom: 24px;
+    padding: 0;
+    padding-bottom: 10px;
+    border: 0;
+    border-bottom: 1px solid #424242;
+    color: #fff;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #202020;
+}
+
+.form__input-password {
+    color: #EE3465;
+    margin-top: 5px;
+    padding: 0;
+    padding-bottom: 10px;
+    border: 0;
+    border-bottom: 1px solid #424242;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #202020;
+}
+
+.form__input-error {
+    margin-top: 6px;
+    color: #EE3465;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.title-form {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    max-width: 396px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+@media (max-width: 768px) {
+    .title-form {
+    }
+}
+
+@media (max-width: 560px) {
+    .title-form {
+        text-align: center;
+    }
+}
+
+
+.reg {
+    margin: 0 auto;
+    margin-top: 134px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 560px) {
+    .reg {
+       margin-top: 222px;
+    }
+}
+
+.reg__button {
+    padding: 0;
+    width: 396px;
+    height: 45px;
+    border-radius: 3px;
+    color: #FFF;
+    text-align: center;
+    align-self: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background: #4285F4;
+    border: 0;
+}
+
+@media (max-width: 560px) {
+    .reg__button {
+       width: 260px;
+       font-size: 12px;
+    }
+}
+
+.reg__button:hover {
+    opacity: 0.5;
+}
+
+.reg__enter {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.reg__enter-text {
+    margin: 0;
+    margin-right: 6px;
+    color: #8B8B8B;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media (max-width: 560px) {
+    .reg__enter-text {
+       font-size: 12px;
+    }
+}
+
+.reg__enter-link {
+    margin-right: 6px;
+    color: #4285F4;
+    text-align: center;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media (max-width: 560px) {
+    .reg__enter-link {
+       font-size: 12px;
+    }
+}
+
+.reg__enter-link:hover {
+    opacity: 0.5;
+}

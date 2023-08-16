@@ -1,0 +1,157 @@
+.profile-form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 410px;
+    height: 100vh;
+}
+
+@media (max-width: 560px) {
+    .profile-form {
+        /* margin: 0 auto;
+        margin-left: 30px;
+        margin-right: 30px; */
+        max-width: 260px;
+    }
+}
+
+.profile-form__list {
+    display: flex;
+
+}
+
+.profile-form__list:first-child {
+    margin-bottom: 17px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #424242;
+}
+
+.profile-form__label {
+    color: #8B8B8B;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.profile-form__input {
+    margin-left: auto;
+    align-self: flex-end;
+    padding: 0;
+    border: 0;
+    text-align: right;
+    color: #fff;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #202020;
+}
+
+.profile-form__input-error {
+    margin-top: 6px;
+    color: #EE3465;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.prof {
+    margin: 0 auto;
+    margin-top: 222px;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+@media (max-width: 560px) {
+    .prof {
+
+
+    }
+}
+
+.prof-form__error {
+    color: #FF004C;
+    text-align: center;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.prof__button {
+    margin-top: 20px;
+    padding: 0;
+    width: 396px;
+    height: 45px;
+    border-radius: 3px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background: #4285F4;
+    border: 0;
+}
+
+.prof__button:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 560px) {
+    .prof__button {
+       width: 260px;
+
+    }
+}
+
+.prof__edit-exit {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.prof__edit-link {
+    margin-right: 6px;
+    color: #4285F4;
+    text-align: center;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.prof__edit-link:hover {
+    opacity: 0.5;
+}
+
+.prof__exit-link {
+    margin-top: 16px;
+    color: #EE3465;
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.prof__exit-link:hover {
+    opacity: 0.5;
+}
+
+.prof-form__error_active {
+    opacity: 1;
+}
