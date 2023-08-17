@@ -1,11 +1,15 @@
 .not-found {
-margin-top: auto;
+/* margin-top: auto; */
 height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
 
 }
 
 .not-found__title {
     margin: 0;
+    margin-top: auto;
     color: #FFF;
     text-align: center;
     font-family: Inter;
@@ -42,7 +46,7 @@ height: 100vh;
 .back-button {
     margin-top: auto;
     margin-bottom: 60px;
-    text-decoration: none;
+    padding: 0;
     color: #4285F4;
     text-align: center;
     font-family: Inter;
@@ -50,6 +54,9 @@ height: 100vh;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .back-button:hover {
