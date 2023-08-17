@@ -20,7 +20,7 @@ function Navigation() {
         </a>
       </div>
       <div className="heder-burger"></div>
-      <div className="sidebar">
+      <div className="sidebar sidebar_active">
         <div className="sidebar__icon" />
         <div className="nav-burger nav-burger_active">
           <Link to="/" className="nav-burger__list">
