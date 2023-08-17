@@ -19,9 +19,9 @@ function Navigation() {
           <div className="nav-tab__icon"></div>
         </a>
       </div>
-      <div className="heder-burger"></div>
+      <button type="button" className="heder-burger"></button>
       <div className="sidebar sidebar_active">
-        <div className="sidebar__icon" />
+        <button type="button" className="sidebar__icon"></button>
         <div className="nav-burger nav-burger_active">
           <Link to="/" className="nav-burger__list">
               Главная
