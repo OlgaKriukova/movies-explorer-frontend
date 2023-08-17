@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.png";
 import './Header.css';
@@ -8,21 +9,21 @@ function Header(props) {
 
   return (
     <header className={headerClassName}>
-        <a href="index.html" className="header__logo">
+        <Link to="/" className="header__logo">
             <img src={logo} alt="смайл" className={headerImgClassName} />
-        </a>
+        </Link>
 
         {props.isShowButtons && (
           <>
             <button className="header__button-registy">
-                <a href="./register.html" className="header__link-registry">
+                <Link to="/signup" className="header__link-registry">
                     Регистрация
-                </a>
+                </Link>
             </button>
             <button className="header__button-enter">
-                <a href="./login.html" className="header__link-enter">
+                <Link to="/signin" className="header__link-enter">
                     Войти
-                </a>
+                </Link>
             </button>
           </>)}
 

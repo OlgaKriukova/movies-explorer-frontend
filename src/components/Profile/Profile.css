@@ -15,6 +15,12 @@
     }
 }
 
+.title-form-profile {
+    text-align: center;
+    padding-bottom: 83px;
+    padding-top: 34px;
+}
+
 .profile-form__list {
     display: flex;
 

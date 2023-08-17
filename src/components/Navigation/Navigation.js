@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import iconMain from "../../images/icon__COLOR_icon-main.svg";
 import './Navigation.css';
 
 function Navigation() {
@@ -8,20 +7,16 @@ function Navigation() {
     <>
       <div className="header-movies">
         <nav className="nav-tab">
-          <Link to="/movies" className="nav-tab__list nav-tab__list_active">
+          <Link to="/movies" className="nav-tab__list">
             Фильмы
           </Link>
           <Link to="/saved-movies" className="nav-tab__list">
             Сохраненные фильмы
           </Link>
         </nav>
-        <a href="./profile.html" className="nav-tab__list">
+        <a href="./profile.html" className="nav-tab__list nav-tab__list_active">
           Аккаунт
-          <img
-            className="nav-tab__icon"
-            alt="Аккаунт"
-            src={iconMain}
-          />
+          <div className="nav-tab__icon"></div>
         </a>
       </div>
       <div className="heder-burger"></div>
