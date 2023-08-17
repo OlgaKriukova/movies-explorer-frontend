@@ -55,6 +55,12 @@
     opacity: 1;
 }
 
+@media (max-width: 768px) {
+    .nav-tab {
+        display: none;
+    }
+}
+
 .nav-tab__list {
     /* margin-top: 28px; */
     margin-right: 16px;
@@ -85,6 +91,12 @@
     margin-left: auto;
     display: flex;
     align-items: center;
+}
+
+@media (max-width: 768px) {
+    .nav-tab__list:last-child  {
+        display: none;
+    }
 }
 
 .nav-tab__icon {
