@@ -20,8 +20,8 @@ function Navigation() {
         </a>
       </div>
       <div className="heder-burger"></div>
-{/*
-      <div className="sidebar">
+
+      <div className="sidebar sidebar_active">
 
         <div className="sidebar__icon" />
         <div className="nav-burger nav-burger_active">
@@ -46,7 +46,7 @@ function Navigation() {
             src={iconMain}
           />
         </a>
-      </div> */}
+      </div>
     </>
   );
 }

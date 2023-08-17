@@ -154,7 +154,12 @@
     top: 0;
     right: 0;
     background-color: #202020;
+    transition: 0.5s;
     z-index: 5;
+}
+
+.sidebar_active {
+    display: flex;
 }
 
 .sidebar__icon {
