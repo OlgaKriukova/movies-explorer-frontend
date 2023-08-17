@@ -1,5 +1,6 @@
 .block-search {
     margin: 0 70px;
+    margin-top: 70px;
     display: flex;
     justify-content: center;
     max-width: 1140px;

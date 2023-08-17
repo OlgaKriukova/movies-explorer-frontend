@@ -154,10 +154,24 @@
 .nav-burger__list:last-child {
     margin-top: auto;
     margin-bottom: 90px;
+    display: flex;
+    align-self: center;
+}
+
+.nav-burger__icon {
+    margin-left: 7px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #313131;
+    background-image: url(../../images/icon__COLOR_icon-main.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .sidebar {
     display: none;
+    /* display: flex; */
     flex-direction: column;
     max-width: 520px;
     width: 100%;
@@ -171,7 +185,7 @@
 }
 
 .sidebar_active {
-    display: flex;
+    /* display: flex; */
 }
 
 .sidebar__icon {

@@ -20,7 +20,7 @@ function Navigation() {
         </a>
       </div>
       <div className="heder-burger"></div>
-      <div className="sidebar">
+      <div className="sidebar sidebar_active">
         <div className="sidebar__icon" />
         <div className="nav-burger nav-burger_active">
           <Link to="/" className="nav-burger__list">
@@ -35,11 +35,7 @@ function Navigation() {
         </div>
         <Link to="/saved-movies" className="nav-burger__list">
             Аккаунт
-            <img
-              className="nav-burger__icon"
-              alt="Аккаунт"
-              src={iconMain}
-            />
+            <div className="nav-burger__icon"></div>
         </Link>
       </div>
     </>
