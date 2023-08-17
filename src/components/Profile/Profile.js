@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import Header from "../Header/Header";
-import iconMain from "../../images/icon__COLOR_icon-main.svg";
 import './Profile.css';
 
 function Profile() {
@@ -48,9 +48,9 @@ function Profile() {
                 <button className="prof__button">Сохранить</button>
                 <div className="prof__edit-exit">
                     <a className="prof__edit-link">Редактировать</a>
-                    <a href="./index.html" className="prof__exit-link">
-                      Выйти из аккаунта
-                    </a>
+                    <Link to="/signin" className="prof__exit-link">
+                        Выйти из аккаунта
+                    </Link>
                 </div>
             </div>
         </div>

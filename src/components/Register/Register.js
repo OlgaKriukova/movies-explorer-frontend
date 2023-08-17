@@ -1,7 +1,14 @@
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import './Register.css';
 
 function Register() {
+  const navigate = useNavigate();
+
+  function handleButtonRegisterClick() {
+		navigate("/signin", { replace: true });
+	}
+
   return (
     <>
         <div className="form">
@@ -52,12 +59,16 @@ function Register() {
                 </div>
             </form>
             <div className="reg">
-                <button className="reg__button">Зарегистрироваться</button>
+                <button className="reg__button"
+                  onClick={handleButtonRegisterClick}
+                >
+                  Зарегистрироваться
+                </button>
                 <div className="reg__enter">
                     <p className="reg__enter-text">Уже зарегистрированы?</p>
-                    <a href="./movies.html" className="reg__enter-link">
+                    <Link to="/signin" className="reg__enter-link">
                       Войти
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
