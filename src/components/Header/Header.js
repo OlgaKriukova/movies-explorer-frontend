@@ -1,11 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.png";
 import './Header.css';
 
 function Header(props) {
+  const navigate = useNavigate();
   const headerClassName = `header ${!(props.isShowButtons||props.isShowNavigation) ? "header-form" : ""}`;
   const headerImgClassName = `${(props.isShowButtons||props.isShowNavigation) && "header__img"}`;
+
+	function handleButtonRegisterClick() {
+		navigate("/signup", { replace: true });
+	}
+
+	function handleButtonLoginClick() {
+		navigate("/signin", { replace: true });
+	}
 
   return (
     <header className={headerClassName}>
@@ -15,15 +24,15 @@ function Header(props) {
 
         {props.isShowButtons && (
           <>
-            <button className="header__button-registy">
-                <Link to="/signup" className="header__link-registry">
-                    Регистрация
-                </Link>
+            <button className="header__button-registy"
+                    onClick={handleButtonRegisterClick}
+            >
+              Регистрация
             </button>
-            <button className="header__button-enter">
-                <Link to="/signin" className="header__link-enter">
-                    Войти
-                </Link>
+            <button className="header__button-enter"
+                    onClick={handleButtonLoginClick}
+            >
+              Войти
             </button>
           </>)}
 

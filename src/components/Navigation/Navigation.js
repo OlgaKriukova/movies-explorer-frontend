@@ -27,10 +27,10 @@ function Navigation() {
             Сохраненные фильмы
           </Link>
         </nav>
-        <a href="./profile.html" className="nav-tab__list nav-tab__list_active">
+        <Link to="/profile" className="nav-tab__list nav-tab__list_active">
           Аккаунт
           <div className="nav-tab__icon"></div>
-        </a>
+        </Link>
       </div>
       <button type="button" className="heder-burger" onClick={handleButtonBurgerClick}></button>
       <div className={sidebarClassName}>
@@ -46,7 +46,7 @@ function Navigation() {
               Сохраненные фильмы
           </Link>
         </div>
-        <Link to="/saved-movies" className="nav-burger__list">
+        <Link to="/profile" className="nav-burger__list">
             Аккаунт
             <div className="nav-burger__icon"></div>
         </Link>
