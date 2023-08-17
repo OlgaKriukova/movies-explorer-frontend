@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
+import iconMain from "../../images/icon__COLOR_icon-main.svg";
 import './Navigation.css';
 
 function Navigation() {
   return (
-
     <>
       <div className="header-movies">
         <nav className="nav-tab">
@@ -20,33 +20,28 @@ function Navigation() {
         </a>
       </div>
       <div className="heder-burger"></div>
-{/*
       <div className="sidebar">
-
         <div className="sidebar__icon" />
         <div className="nav-burger nav-burger_active">
-          <a href="./index.html" className="nav-burger__list">
-            Главная
-          </a>
-          <a
-            href="./movies.html"
-            className="nav-burger__list nav-burger__list_active"
-          >
-            Фильмы
-          </a>
-          <a href="./savedMovies.html" className="nav-burger__list">
-            Сохраненные фильмы
-          </a>
+          <Link to="/" className="nav-burger__list">
+              Главная
+          </Link>
+          <Link to="/movies" className="nav-burger__list nav-burger__list_active">
+              Фильмы
+          </Link>
+          <Link to="/saved-movies" className="nav-burger__list">
+              Сохраненные фильмы
+          </Link>
         </div>
-        <a className="nav-burger__list">
-          Аккаунт
-          <img
-            className="nav-burger__icon"
-            alt="Аккаунт"
-            src={iconMain}
-          />
-        </a>
-      </div> */}
+        <Link to="/saved-movies" className="nav-burger__list">
+            Аккаунт
+            <img
+              className="nav-burger__icon"
+              alt="Аккаунт"
+              src={iconMain}
+            />
+        </Link>
+      </div>
     </>
   );
 }
