@@ -9,12 +9,14 @@
 @media (max-width: 768px) {
     .block-search {
         margin: 0 30px;
+        margin-top: 80px;
     }
 }
 
 @media (max-width: 655px) {
     .block-search {
         margin: 0 10px;
+        margin-top: 80px;
         flex-direction: column;
     }
 }
