@@ -9,6 +9,12 @@
 .card__movie-title {
     margin: 0;
     padding: 0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .card__movie-like {

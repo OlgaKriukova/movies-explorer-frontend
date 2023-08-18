@@ -43,7 +43,7 @@ export default function Login() {
 						<span className="form__input-error">Что-то пошло не так...</span>
 					</div>
 				</form>
-				<div className="reg">
+				<div className="reg reg-login">
 					<button className="reg__button"
 					        onClick={handleButtonLoginClick}
 					>

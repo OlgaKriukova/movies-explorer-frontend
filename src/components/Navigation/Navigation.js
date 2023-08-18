@@ -20,14 +20,14 @@ function Navigation() {
     <>
       <div className="header-movies">
         <nav className="nav-tab">
-          <Link to="/movies" className="nav-tab__list">
+          <Link to="/movies" className="nav-tab__list nav-tab__list_active">
             Фильмы
           </Link>
           <Link to="/saved-movies" className="nav-tab__list">
             Сохраненные фильмы
           </Link>
         </nav>
-        <Link to="/profile" className="nav-tab__list nav-tab__list_active">
+        <Link to="/profile" className="nav-tab__list">
           Аккаунт
           <div className="nav-tab__icon"></div>
         </Link>

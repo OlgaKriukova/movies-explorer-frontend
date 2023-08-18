@@ -8,10 +8,10 @@ function Footer() {
         </p>
         <div className="footer__bottom bottom">
             <p className="bottom__year">© 2020</p>
-            <a href="#" className="bottom__link">
+            <a href="https://practicum.yandex.ru/" className="bottom__link" target="_blank">
                 Яндекс.Практикум
             </a>
-            <a href="#" className="bottom__link">
+            <a href="https://github.com/" className="bottom__link" target="_blank">
                 Github
             </a>
         </div>

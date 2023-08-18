@@ -12,7 +12,7 @@ function MoviesCard(props) {
         />
         <figcaption className="card__caption">
             <div className="card__movie-like">
-                <p className="card__movie-title">props.card.title</p>
+                <p className="card__movie-title">{props.card.title}</p>
                 {(props.source==='saved') && (
                 <button type="button" className="card__delete">
                     <img

@@ -120,6 +120,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    /* margin-bottom: 50px; */
 }
 
 .title-form {
@@ -147,8 +148,8 @@
 
 
 .reg {
-    margin: 0 auto;
-    margin-top: 134px;
+    margin: auto;
+    margin-top: 130px;
     display: flex;
     flex-direction: column;
 }
@@ -157,6 +158,10 @@
     .reg {
        margin-top: 222px;
     }
+}
+
+.reg-login {
+    margin-top: 200px;
 }
 
 .reg__button {

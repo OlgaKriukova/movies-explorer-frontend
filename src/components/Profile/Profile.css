@@ -43,7 +43,7 @@
 
 .profile-form__input {
     margin-left: auto;
-    width: 350px;
+    max-width: 350px;
     padding: 0;
     border: 0;
     text-align: right;
@@ -54,6 +54,12 @@
     font-weight: 400;
     line-height: normal;
     background: #202020;
+}
+
+@media (max-width: 350px) {
+    .profile-form__input {
+        width: 220px;
+    }
 }
 
 .profile-form__input-error {
@@ -67,9 +73,9 @@
 }
 
 .prof {
-    margin: 0 auto;
-    margin-top: 222px;
-    margin-bottom: 70px;
+    margin: auto;
+    margin-top: 200px;
+    /* margin-bottom: 70px; */
     display: flex;
     flex-direction: column;
 
@@ -83,6 +89,7 @@
 }
 
 .prof-form__error {
+    display: none;
     color: #FF004C;
     text-align: center;
     font-family: Inter;
@@ -93,6 +100,7 @@
 }
 
 .prof__button {
+    display: none;
     margin-top: 20px;
     padding: 0;
     width: 396px;
@@ -129,11 +137,11 @@
 
 .prof__edit-link {
     margin-right: 6px;
-    color: #4285F4;
+    color: #fff;
     text-align: center;
     text-decoration: none;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -152,6 +160,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    text-decoration: none;
 }
 
 .prof__exit-link:hover {

@@ -19,6 +19,7 @@
     margin-top: 70px;
     display: flex;
     justify-content: start;
+    height: auto;
     }
 
     @media (max-width: 560px) {
