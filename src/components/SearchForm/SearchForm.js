@@ -2,7 +2,7 @@ import './SearchForm.css';
 
 function SearchForm() {
   return (
-    <div className="block-search">
+    <section className="block-search">
 	  <form action="" className="search-form">
 		<input
 		  type="text"
@@ -33,7 +33,7 @@ function SearchForm() {
 		  Короткометражки
 		</label>
 	  </div>
-	</div>
+	</section>
   );
 }
 

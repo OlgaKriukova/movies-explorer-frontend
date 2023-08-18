@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import './Profile.css';
 
 function Profile() {
+  const navigate = useNavigate();
   const [isEditProfile, setEditProfile] = useState(false);
 
   function handleButtonEditClick() {
@@ -12,6 +13,10 @@ function Profile() {
 
   function handleButtonSaveClick() {
 		setEditProfile(false);
+	}
+
+  function handleButtonExitClick() {
+		navigate("/signin", { replace: true });
 	}
 
   const profButtonSaveClassName = `prof__button ${isEditProfile ? "prof__button_active" : ""}`;
@@ -71,7 +76,9 @@ function Profile() {
                     >
                         Редактировать
                     </button>
-                    <button to="/signin" className="prof__exit">
+                    <button className="prof__exit"
+                            onClick={handleButtonExitClick}
+                    >
                         Выйти из аккаунта
                     </button>
                 </div>

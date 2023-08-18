@@ -6,16 +6,18 @@ import './SavedMovies.css';
 
 function SavedMovies() {
   return (
-    <main>
-    		<Header
-            isShowNavigation={true}
-        />
-        <SearchForm />
-		    <MoviesCardList
-            source={"saved"}
-        />
-        <Footer/>
-	  </main>
+    <>
+      <Header
+              isShowNavigation={true}
+          />
+      <main>
+          <SearchForm />
+          <MoviesCardList
+              source={"saved"}
+          />
+      </main>
+      <Footer/>
+    </>
   );
 }
 

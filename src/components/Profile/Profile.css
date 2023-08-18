@@ -119,6 +119,7 @@
     line-height: normal;
     background: #4285F4;
     border: 0;
+    cursor: pointer;
 }
 
 .prof__button:hover {
@@ -159,6 +160,7 @@
     line-height: normal;
     background-color: transparent;
     border: 0;
+    cursor: pointer;
 }
 
 .prof__edit:hover {
@@ -181,6 +183,7 @@
     text-decoration: none;
     background-color: transparent;
     border: 0;
+    cursor: pointer;
 }
 
 .prof__exit:hover {

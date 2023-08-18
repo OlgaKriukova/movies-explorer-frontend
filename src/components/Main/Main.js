@@ -9,19 +9,21 @@ import './Main.css';
 
 function Main() {
   return (
-    <main className="main">
-        <div className="header-background">
+    <>
+    <div className="header-background">
         <Header
           isShowButtons={true}
         />
         </div>
+    <main className="main">
         <Promo/>
         <AboutProject/>
         <Techs/>
         <AboutMe/>
         <Portfolio/>
-        <Footer/>
     </main>
+    <Footer/>
+    </>
   );
 }
 
