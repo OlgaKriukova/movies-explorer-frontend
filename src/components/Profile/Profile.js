@@ -1,8 +1,23 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import './Profile.css';
 
 function Profile() {
+  const [isEditProfile, setEditProfile] = useState(false);
+
+  function handleButtonEditClick() {
+		setEditProfile(true);
+	}
+
+  function handleButtonSaveClick() {
+		setEditProfile(false);
+	}
+
+  const profButtonSaveClassName = `prof__button ${isEditProfile ? "prof__button_active" : ""}`;
+  const profButtonEditClassName = `prof__button ${isEditProfile ? "prof__button_active" : ""}`;
+  const profFormErrorClassName = `prof-form__error ${isEditProfile ? "prof-form__error_active" : ""}`;
+
   return (
     <>
         <Header
@@ -42,12 +57,20 @@ function Profile() {
                 </div>
             </form>
             <div className="prof">
-                <span className="prof-form__error">
+                <span className={profFormErrorClassName}>
                     При обновлении профиля произошла ошибка.
                 </span>
-                <button className="prof__button">Сохранить</button>
+                <button className={profButtonSaveClassName}
+                        onClick={handleButtonSaveClick}
+                >
+                    Сохранить
+                </button>
                 <div className="prof__edit-exit">
-                    <a className="prof__edit-link">Редактировать</a>
+                    <button className={profButtonEditClassName}
+                            onClick={handleButtonEditClick}
+                    >
+                        Редактировать
+                    </button>
                     <Link to="/signin" className="prof__exit-link">
                         Выйти из аккаунта
                     </Link>

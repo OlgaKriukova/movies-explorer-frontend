@@ -99,6 +99,10 @@
     line-height: normal;
 }
 
+.prof-form__error_active {
+    display: flex;
+}
+
 .prof__button {
     display: none;
     margin-top: 20px;
@@ -126,6 +130,10 @@
        width: 260px;
 
     }
+}
+
+.prof__button_active {
+    display: flex;
 }
 
 .prof__edit-exit {
