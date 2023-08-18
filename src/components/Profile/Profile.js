@@ -15,7 +15,7 @@ function Profile() {
 	}
 
   const profButtonSaveClassName = `prof__button ${isEditProfile ? "prof__button_active" : ""}`;
-  const profButtonEditClassName = `prof__button ${isEditProfile ? "prof__button_active" : ""}`;
+  const profButtonEditClassName = `prof__edit ${isEditProfile ? "prof__edit" : ""}`;
   const profFormErrorClassName = `prof-form__error ${isEditProfile ? "prof-form__error_active" : ""}`;
 
   return (
@@ -71,9 +71,9 @@ function Profile() {
                     >
                         Редактировать
                     </button>
-                    <Link to="/signin" className="prof__exit-link">
+                    <button to="/signin" className="prof__exit">
                         Выйти из аккаунта
-                    </Link>
+                    </button>
                 </div>
             </div>
         </div>
