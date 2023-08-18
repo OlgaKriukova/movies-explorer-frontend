@@ -89,7 +89,7 @@
 }
 
 .prof-form__error {
-    /* display: none; */
+    display: none;
     color: #FF004C;
     text-align: center;
     font-family: Inter;
@@ -100,11 +100,11 @@
 }
 
 .prof-form__error_active {
-    display: flex;
+    display: block;
 }
 
 .prof__button {
-    /* display: none; */
+    display: none;
     margin-top: 20px;
     padding: 0;
     width: 396px;
@@ -133,13 +133,12 @@
 }
 
 .prof__button_active {
-    display: flex;
+    display: block;
 }
 
 .prof__edit-exit {
     display: none;
     margin-top: 16px;
-    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -149,7 +148,6 @@
 }
 
 .prof__edit {
-    /* display: none; */
     margin-right: 6px;
     color: #fff;
     text-align: center;
