@@ -23,6 +23,7 @@
     height: 45px;
     background-image: url(../../images/sidebar__icon.svg);
     background-color: transparent;
+    background-size: contain;
     position: absolute;
     top: 0;
     right: 0;
@@ -47,6 +48,8 @@
 @media (max-width: 560px) {
     .heder-burger {
         margin-right: 15px;
+        width: 35px;
+        height: 40px;
     }
 }
 
@@ -131,7 +134,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    margin-top: 159px;
+    margin-top: 105px;
 
 }
 

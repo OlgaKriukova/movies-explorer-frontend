@@ -34,6 +34,13 @@
     opacity: 0.5;
 }
 
+@media (max-width: 768px) {
+    .more {
+        margin-top: 50px;
+
+    }
+}
+
 @media (max-width: 560px) {
     .more__button {
         width: 240px;

@@ -142,6 +142,7 @@
 
 @media (max-width: 560px) {
     .title-form {
+        margin-bottom: 80px;
         text-align: center;
     }
 }
@@ -156,7 +157,9 @@
 
 @media (max-width: 560px) {
     .reg {
-       margin-top: 222px;
+       /* margin-top: 222px; */
+       margin: 0 auto;
+       margin-top: auto;
     }
 }
 

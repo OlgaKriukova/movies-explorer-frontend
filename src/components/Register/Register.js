@@ -43,6 +43,7 @@ function Register() {
                       minLength={7}
                       maxLength={25}
                     />
+                    {/* <span className="form__input-error">Пользователь с таким email уже существует.</span> */}
                 </div>
                 <div className="form__list">
                     <label htmlFor="password" className="form__label">
@@ -59,6 +60,7 @@ function Register() {
                 </div>
             </form>
             <div className="reg">
+                {/* <span className="form__input-error">При регистрации пользователя произошла ошибка.</span> */}
                 <button className="reg__button"
                   onClick={handleButtonRegisterClick}
                 >

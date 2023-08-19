@@ -1,22 +1,20 @@
 .header {
     height: 74px;
     display: flex;
-    /* justify-content: end; */
-    /* background-color: #073042; */
 }
 
-@media (max-width: 768px) {
-    .header {
+    @media (max-width: 768px) {
+        .header {
+        }
     }
-}
 
-@media (max-width: 560px) {
-    .header {
+    @media (max-width: 560px) {
+        .header {
+        }
     }
-}
 
 .header-form {
-    margin-top: 70px;
+    margin-top: 200px;
     display: flex;
     justify-content: start;
     height: auto;
@@ -39,18 +37,18 @@
     margin-left: 70px;
 }
 
-@media (max-width: 768px) {
-    .header__img {
-        margin-left: 30px;
+    @media (max-width: 768px) {
+        .header__img {
+            margin-left: 30px;
 
+        }
     }
-}
 
-@media (max-width: 560px) {
-    .header__img {
-        margin-left: 14px;
+    @media (max-width: 560px) {
+        .header__img {
+            margin-left: 14px;
+        }
     }
-}
 
 .header__button-registy {
     border: 0;
@@ -70,16 +68,16 @@
     opacity: 0.5;
 }
 
-@media (max-width: 768px) {
-    .header__button-registy {
+    @media (max-width: 768px) {
+        .header__button-registy {
+        }
     }
-}
 
-@media (max-width: 560px) {
-    .header__button-registy {
-        font-size: 10px;
+    @media (max-width: 560px) {
+        .header__button-registy {
+            font-size: 10px;
+        }
     }
-}
 
 .header__link-registry {
     text-decoration: none;
@@ -107,20 +105,20 @@
     opacity: 0.5;
 }
 
-@media (max-width: 768px) {
-    .header__button-enter {
-        margin-right: 20px;
+    @media (max-width: 768px) {
+        .header__button-enter {
+            margin-right: 20px;
+        }
     }
-}
 
-@media (max-width: 560px) {
-    .header__button-enter {
-        margin: 24px 14px;
-        width: 54px;
-        height: 26px;
-        font-size: 10px;
+    @media (max-width: 560px) {
+        .header__button-enter {
+            margin: 24px 14px;
+            width: 54px;
+            height: 26px;
+            font-size: 10px;
+        }
     }
-}
 
 .header__link-enter {
     text-decoration: none;

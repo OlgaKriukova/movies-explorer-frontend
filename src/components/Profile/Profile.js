@@ -29,7 +29,7 @@ function Profile() {
             isShowNavigation={true}
         />
         <div className="profile-form">
-            <h1 className="title-form title-form-profile">Привет, Виталий!</h1>
+            <h1 className="title-form-profile">Привет, Виталий!</h1>
             <form className="profile-form__table">
                 <div className="profile-form__list">
                     <label htmlFor="name" className="profile-form__label">
