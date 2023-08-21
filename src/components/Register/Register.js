@@ -11,8 +11,8 @@ function Register() {
 
   return (
     <>
+    <Header/>
         <div className="form">
-            <Header/>
             <h1 className="title-form">Добро пожаловать!</h1>
             <form className="form__table">
                 <div className="form__list">

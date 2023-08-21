@@ -5,7 +5,7 @@ import './Header.css';
 
 function Header(props) {
   const navigate = useNavigate();
-  const headerClassName = `header ${!(props.isShowButtons||props.isShowNavigation) ? "header-form" : ""}`;
+  const headerClassName = `header ${!(props.isShowButtons||props.isShowNavigation) ? "header-form" : ""} ${(props.isBlue) ? "header-blue" : ""}`;
   const headerImgClassName = `${(props.isShowButtons||props.isShowNavigation) && "header__img"}`;
 
 	function handleButtonRegisterClick() {
@@ -18,6 +18,7 @@ function Header(props) {
 
   return (
     <header className={headerClassName}>
+
         <Link to="/" className="header__logo">
             <img src={logo} alt="смайл" className={headerImgClassName} />
         </Link>

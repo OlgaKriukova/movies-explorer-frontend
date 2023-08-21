@@ -19,8 +19,8 @@
 
 .heder-burger {
     display: none;
-    width: 45px;
-    height: 45px;
+    width: 47px;
+    height: 46px;
     background-image: url(../../images/sidebar__icon.svg);
     background-color: transparent;
     background-size: contain;
@@ -42,6 +42,7 @@
 @media (max-width: 768px) {
     .heder-burger {
         display: flex;
+        margin-right: 25px;
     }
 }
 
@@ -54,10 +55,7 @@
 }
 
 .nav-tab {
-    /* padding: 0;
-    margin: 0; */
     display: flex;
-    /* margin-bottom: 98px; */
     opacity: 1;
 }
 
@@ -213,8 +211,8 @@
     margin-top: 22.4px;
     margin-right: 22.4px;
     margin-left: auto;
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     border: none;
     background-image: url(../../images/sidebar__close.svg);
     background-size: cover;

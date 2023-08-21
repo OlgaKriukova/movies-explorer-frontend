@@ -10,11 +10,10 @@ import './Main.css';
 function Main() {
   return (
     <>
-    <div className="header-background">
-        <Header
-          isShowButtons={true}
-        />
-        </div>
+    <Header
+      isShowButtons={true}
+      isBlue={true}
+    />
     <main className="main">
         <Promo/>
         <AboutProject/>

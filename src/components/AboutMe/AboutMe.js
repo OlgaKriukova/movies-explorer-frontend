@@ -18,7 +18,7 @@ function AboutMe() {
           </p>
           <a className="about-me__git" target="_blank" href='https://github.com/'>Github</a>
         </div>
-        <img src={vitaliy} className="about-me__photo" />
+        <img src={vitaliy} className="about-me__photo" alt='фото' />
       </div>
     </section>
   );

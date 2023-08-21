@@ -13,10 +13,16 @@
         }
     }
 
+.header-blue {
+    background-color: #073042;
+}
+
 .header-form {
+    margin: 0 auto;
     margin-top: 200px;
     display: flex;
     justify-content: start;
+    width: 396px;
     height: auto;
     }
 
@@ -24,12 +30,17 @@
         .header-form {
             margin: 0 auto;
             margin-top: 70px;
-            text-align: center;
+            width: 278px;
+            justify-content: center;
         }
     }
 
 .header__logo {
     text-decoration: none;
+}
+
+.header__logo:hover {
+    opacity: 0.5;
 }
 
 .header__img {
@@ -39,7 +50,7 @@
 
     @media (max-width: 768px) {
         .header__img {
-            margin-left: 30px;
+            margin-left: 25px;
 
         }
     }
