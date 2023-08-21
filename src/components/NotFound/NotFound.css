@@ -40,7 +40,7 @@ justify-content: center;
 
 @media (max-width: 560px) {
     .not-found__subtitle {
-        font-size: 12pxpx;
+        font-size: 12px;
     }
 }
 

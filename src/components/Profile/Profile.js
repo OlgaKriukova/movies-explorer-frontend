@@ -32,7 +32,7 @@ function Profile() {
             <h1 className="title-form-profile">Привет, Виталий!</h1>
             <form className="profile-form__table">
                 <div className="profile-form__list">
-                    <label htmlFor="name" className="profile-form__label">
+                    <label className="profile-form__label">
                       Имя
                     </label>
                     <input
@@ -40,22 +40,22 @@ function Profile() {
                       className="profile-form__input"
                       type="text"
                       placeholder="Виталий"
-                      required=""
+                      required={true}
                       minLength={2}
                       maxLength={25}
                       defaultValue=""
                     />
                 </div>
                 <div className="profile-form__list">
-                    <label htmlFor="email" className="profile-form__label">
+                    <label className="profile-form__label">
                       E-mail
                     </label>
                     <input
-                      id="name"
+                      id="email"
                       className="profile-form__input"
                       type="email"
                       placeholder="pochta@yandex.ru"
-                      required=""
+                      required={true}
                       minLength={7}
                       maxLength={25}
                     />

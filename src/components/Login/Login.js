@@ -16,7 +16,7 @@ export default function Login() {
 				<h1 className="title-form">Рады видеть!</h1>
 				<form className="form__table">
 					<div className="form__list">
-						<label htmlFor="email" className="form__label">
+						<label className="form__label">
 						E-mail
 						</label>
 						<input
@@ -24,13 +24,13 @@ export default function Login() {
 						className="form__input"
 						type="email"
 						placeholder="pochta@yandex.ru"
-						required=""
+						required={true}
 						minLength={7}
 						maxLength={25}
 						/>
 					</div>
 					<div className="form__list">
-						<label htmlFor="password" className="form__label">
+						<label className="form__label">
 						Пароль
 						</label>
 						<input
@@ -38,7 +38,7 @@ export default function Login() {
 						className="form__input-password"
 						type="password"
 						placeholder="••••••••••••••"
-						required=""
+						required={true}
 						/>
 						<span className="form__input-error">Что-то пошло не так...</span>
 					</div>

@@ -2,8 +2,8 @@ import './SearchForm.css';
 
 function SearchForm() {
   return (
-    <section className="block-search">
-	  <form action="" className="search-form">
+    <section className="block-search" aria-label="строка поиска">
+	  <form className="search-form">
 		<input
 		  type="text"
 		  name="text"

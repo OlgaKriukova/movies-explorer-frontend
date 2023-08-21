@@ -16,7 +16,7 @@ function Register() {
             <h1 className="title-form">Добро пожаловать!</h1>
             <form className="form__table">
                 <div className="form__list">
-                    <label htmlFor="name" className="form__label">
+                    <label className="form__label">
                       Имя
                     </label>
                     <input
@@ -24,29 +24,29 @@ function Register() {
                       className="form__input"
                       type="text"
                       placeholder="Виталий"
-                      required=""
+                      required={true}
                       minLength={2}
                       maxLength={25}
                       defaultValue=""
                     />
                 </div>
                 <div className="form__list">
-                    <label htmlFor="email" className="form__label">
+                    <label className="form__label">
                       E-mail
                     </label>
                     <input
-                      id="name"
+                      id="email"
                       className="form__input"
                       type="email"
                       placeholder="pochta@yandex.ru"
-                      required=""
+                      required={true}
                       minLength={7}
                       maxLength={25}
                     />
                     {/* <span className="form__input-error">Пользователь с таким email уже существует.</span> */}
                 </div>
                 <div className="form__list">
-                    <label htmlFor="password" className="form__label">
+                    <label className="form__label">
                       Пароль
                     </label>
                     <input
@@ -54,7 +54,7 @@ function Register() {
                       className="form__input-password"
                       type="password"
                       placeholder="••••••••••••••"
-                      required=""
+                      required={true}
                     />
                     <span className="form__input-error">Что-то пошло не так...</span>
                 </div>
