@@ -100,7 +100,7 @@
     border-bottom-left-radius: 9px;
     background: #2F2F2F;
     display: grid;
-    grid-template-columns: 1fr 60px 10px;
+    grid-template-columns: 1fr 65px 25px;
     gap: 30px;
 }
 
@@ -114,7 +114,7 @@
         .search-form {
             border-top-right-radius: 9px;
             border-bottom-right-radius: 9px;
-            grid-template-columns: minmax(180px, 1fr) 65px  26px;
+            grid-template-columns: minmax(180px, 1fr) 60px  10px;
             gap: 5px;
         }
     }
@@ -128,7 +128,7 @@
 .search-form__line {
     margin-left: 18px;
     padding: 0;
-    padding-left: 42px;
+    padding-left: 4px;
     border: 0;
     background-color: #2F2F2F;
     background-image: url(../../images/icon__SearchForm.svg);
