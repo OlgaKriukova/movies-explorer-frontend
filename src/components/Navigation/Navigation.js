@@ -26,7 +26,7 @@ function Navigation() {
             Сохраненные фильмы
           </Link>
         </nav>
-        <Link to="/profile" className="nav-tab__list">
+        <Link to="/profile" className="nav-tab__account">
           Аккаунт
           <div className="nav-tab__icon"></div>
         </Link>
@@ -45,7 +45,7 @@ function Navigation() {
               Сохраненные фильмы
           </Link>
         </div>
-        <Link to="/profile" className="nav-burger__list">
+        <Link to="/profile" className="nav-burger__account">
             Аккаунт
             <div className="nav-burger__icon"></div>
         </Link>

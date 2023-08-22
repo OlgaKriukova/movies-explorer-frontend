@@ -159,8 +159,14 @@
 
 @media (max-width: 560px) {
     .about-me__photo {
-        margin: 0;
+        margin: 0 auto;
         max-width: 292px;
         max-height: 352px;
+    }
+}
+
+@media (max-width: 330px) {
+    .about-me__photo {
+        margin: 0;
     }
 }

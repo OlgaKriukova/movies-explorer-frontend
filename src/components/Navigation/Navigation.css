@@ -48,7 +48,7 @@
 
 @media (max-width: 560px) {
     .heder-burger {
-        margin-top: 27px;
+        margin-top: 20px;
         margin-right: 15px;
         width: 35px;
         height: 40px;
@@ -91,15 +91,23 @@
 
 }
 
-.nav-tab__list:last-child {
+.nav-tab__account {
     margin-left: auto;
     margin-right: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
+    color: #FFF;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 @media (max-width: 768px) {
-    .nav-tab__list:last-child  {
+    .nav-tab__account  {
         display: none;
     }
 }
@@ -137,6 +145,12 @@
 
 }
 
+@media  (max-height: 418px){
+    .nav-burger {
+        margin-top: 0px;
+    }
+}
+
 .nav-burger__list {
     margin-bottom: 28px;
     color: #FFF;
@@ -153,14 +167,6 @@
     opacity: 0.5;
 }
 
-
-.nav-burger__list:last-child {
-    margin-top: auto;
-    margin-bottom: 90px;
-    display: flex;
-    align-self: center;
-}
-
 .nav-burger__list_active {
     padding-bottom: 4px;
     align-items: center;
@@ -170,6 +176,21 @@
 
 .nav-burger__list_active:hover {
     opacity: 0.5;
+}
+
+.nav-burger__account {
+    margin-top: auto;
+    margin-bottom: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .nav-burger__icon {

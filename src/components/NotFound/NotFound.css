@@ -1,9 +1,10 @@
 .not-found {
     min-height: 100vh;
+    display: flex;
 }
 
 .not-found__container {
-    margin-top: 245px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,6 +71,14 @@
 @media (max-width: 560px) {
     .back-button {
         margin-top: 284px;
+        margin-bottom: 30px;
+        font-size: 12px;
+    }
+}
+
+@media (max-height: 550px) {
+    .back-button {
+        margin-top: 50px;
         margin-bottom: 30px;
         font-size: 12px;
     }
