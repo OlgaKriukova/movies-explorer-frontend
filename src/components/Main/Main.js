@@ -13,6 +13,7 @@ function Main() {
     <Header
       isShowButtons={true}
       isBlue={true}
+      headerForm={'Main'}
     />
     <main className="main">
         <Promo/>

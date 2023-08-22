@@ -115,7 +115,6 @@
         .search-form {
             border-top-right-radius: 9px;
             border-bottom-right-radius: 9px;
-            /* grid-template-columns: minmax(180px, 1fr) 60px  10px; */
             gap: 5px;
         }
     }

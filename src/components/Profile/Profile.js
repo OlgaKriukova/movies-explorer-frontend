@@ -27,6 +27,7 @@ function Profile() {
     <>
         <Header
             isShowNavigation={true}
+            headerForm={'Profile'}
         />
         <div className="profile-form">
             <h1 className="title-form-profile">Привет, Виталий!</h1>

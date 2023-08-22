@@ -2,10 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import './Navigation.css';
 
-function Navigation() {
+function Navigation(props) {
   const [isSidebarActive, setSidebarActive] = useState(false);
 
   const sidebarClassName = `sidebar ${isSidebarActive ? "sidebar_active" : ""}`;
+  const moviesClassName = `nav-tab__list ${props.headerForm==='Movies' ? "nav-tab__list_active" : ""}`;
+  const savedMoviesClassName = `nav-tab__list ${props.headerForm==='SavedMovies' ? "nav-tab__list_active" : ""}`;
+
+  const mainBurgerClassName = `nav-burger__list ${props.headerForm==='Main' ? "nav-burger__list_active" : ""}`;
+  const moviesBurgerClassName = `nav-burger__list ${props.headerForm==='Movies' ? "nav-burger__list_active" : ""}`;
+  const savedMoviesBurgerClassName = `nav-burger__list ${props.headerForm==='SavedMovies' ? "nav-burger__list_active" : ""}`;
 
   function handleButtonBurgerClick(card) {
     setSidebarActive(true);
@@ -19,10 +25,10 @@ function Navigation() {
     <>
       <div className="header-movies">
         <nav className="nav-tab">
-          <Link to="/movies" className="nav-tab__list nav-tab__list_active">
+          <Link to="/movies" className={moviesClassName}>
             Фильмы
           </Link>
-          <Link to="/saved-movies" className="nav-tab__list">
+          <Link to="/saved-movies" className={savedMoviesClassName}>
             Сохраненные фильмы
           </Link>
         </nav>
@@ -35,13 +41,13 @@ function Navigation() {
       <div className={sidebarClassName}>
         <button type="button" className="sidebar__icon" onClick={handleButtonBurgerCloseClick}></button>
         <div className="nav-burger nav-burger_active">
-          <Link to="/" className="nav-burger__list">
+          <Link to="/" className={mainBurgerClassName}>
               Главная
           </Link>
-          <Link to="/movies" className="nav-burger__list nav-burger__list_active">
+          <Link to="/movies" className={moviesBurgerClassName}>
               Фильмы
           </Link>
-          <Link to="/saved-movies" className="nav-burger__list">
+          <Link to="/saved-movies" className={savedMoviesBurgerClassName}>
               Сохраненные фильмы
           </Link>
         </div>

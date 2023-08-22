@@ -9,6 +9,7 @@ function SavedMovies() {
     <>
       <Header
               isShowNavigation={true}
+              headerForm={'SavedMovies'}
           />
       <main>
           <SearchForm />

@@ -39,7 +39,9 @@ function Header(props) {
 
         {props.isShowNavigation && (
           <>
-          <Navigation/>
+            <Navigation
+              headerForm={props.headerForm}
+            />
           </>
           )}
     </header>

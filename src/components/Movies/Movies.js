@@ -6,22 +6,23 @@ import './Movies.css';
 
 function Movies() {
   return (
-	<>
-		<Header
-				isShowNavigation={true}
-		/>
-		<main>
-			<SearchForm />
-			<MoviesCardList
-				source={"remote"}
-			/>
+    <>
+        <Header
+                isShowNavigation={true}
+                headerForm={'Movies'}
+        />
+        <main>
+            <SearchForm />
+            <MoviesCardList
+                source={"remote"}
+            />
 
-			<div className="more">
-			<button className="more__button">Еще</button>
-			</div>
-		</main>
-		<Footer/>
-	</>
+            <div className="more">
+            <button className="more__button">Еще</button>
+            </div>
+        </main>
+        <Footer/>
+    </>
   );
 }
 
