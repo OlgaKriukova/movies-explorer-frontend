@@ -1,4 +1,5 @@
 import './Promo.css';
+import landing_promo_pic from "../../images/landing_promo_pic.png"
 
 function Promo() {
   return (
@@ -6,7 +7,8 @@ function Promo() {
           <h1 className="promo__title">
               Учебный проект студента факультета Веб-разработки.
           </h1>
-         <div className="promo__pic" />
+         {/* <div className="promo__pic" /> */}
+         <img className="promo__pic" src={landing_promo_pic} alt="тесьма"/>
       </section>
   );
 }
