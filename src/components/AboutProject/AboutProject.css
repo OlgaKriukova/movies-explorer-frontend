@@ -36,7 +36,7 @@
 
 @media (max-width: 560px) {
     .table {
-        margin: 0 18px;
+       margin: 0 18px;
        grid-template-columns: auto;
     }
 }

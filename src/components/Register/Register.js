@@ -11,7 +11,7 @@ function Register() {
 
   return (
     <>
-    <Header/>
+        <Header/>
         <div className="form">
             <h1 className="title-form">Добро пожаловать!</h1>
             <form className="form__table">
@@ -43,7 +43,6 @@ function Register() {
                       minLength={7}
                       maxLength={25}
                     />
-                    {/* <span className="form__input-error">Пользователь с таким email уже существует.</span> */}
                 </div>
                 <div className="form__list">
                     <label className="form__label">
@@ -60,7 +59,6 @@ function Register() {
                 </div>
             </form>
             <div className="reg">
-                {/* <span className="form__input-error">При регистрации пользователя произошла ошибка.</span> */}
                 <button className="reg__button"
                   onClick={handleButtonRegisterClick}
                 >

@@ -21,14 +21,13 @@
     margin: 0 auto;
     margin-top: 200px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     width: 396px;
     height: auto;
     }
 
     @media (max-width: 560px) {
         .header-form {
-            margin: 0 auto;
             margin-top: 70px;
             width: 278px;
             justify-content: center;

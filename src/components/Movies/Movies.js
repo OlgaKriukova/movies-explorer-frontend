@@ -9,7 +9,7 @@ function Movies() {
 	<>
 		<Header
 				isShowNavigation={true}
-			/>
+		/>
 		<main>
 			<SearchForm />
 			<MoviesCardList

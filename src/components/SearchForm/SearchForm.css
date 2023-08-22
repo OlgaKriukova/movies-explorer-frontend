@@ -71,9 +71,6 @@
     @media (max-width: 560px) {
         .block-search__label {
             font-size: 11px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 18px;
         }
     }
 

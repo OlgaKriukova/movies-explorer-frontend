@@ -49,7 +49,6 @@
 @media (max-width: 768px) {
     .about-me__title {
         font-size: 40px;
-        font-style: normal;
         line-height: 40px;
         letter-spacing: -1.6px;
     }
@@ -130,15 +129,12 @@
 @media (max-width: 768px) {
     .about-me__git {
         margin-top: 85px;
-        
     }
 }
 
 @media (max-width: 560px) {
     .about-me__git {
         margin-top: 40px;
-        
-
     }
 }
 
@@ -164,7 +160,6 @@
 @media (max-width: 560px) {
     .about-me__photo {
         margin: 0;
-
         max-width: 292px;
         max-height: 352px;
     }

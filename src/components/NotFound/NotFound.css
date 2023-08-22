@@ -1,8 +1,5 @@
 .not-found {
-min-height: 100vh;
-/* margin: auto; */
-
-
+    min-height: 100vh;
 }
 
 .not-found__container {

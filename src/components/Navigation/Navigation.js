@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import iconMain from "../../images/icon__COLOR_icon-main.svg";
 import './Navigation.css';
 
 function Navigation() {
