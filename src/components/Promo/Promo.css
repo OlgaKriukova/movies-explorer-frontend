@@ -50,12 +50,14 @@
     height: 244px;
     opacity: 0.699999988079071;
     background-image: url(../../images/landing_promo_pic.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     z-index: 3;
 }
 
 @media (max-width: 768px) {
     .promo__pic {
-        margin: 0 auto;
+        margin: 0 44px;
         margin-bottom: 70px;
         max-width: 100%;
         min-width: 100%;
@@ -63,11 +65,10 @@
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 350px) {
     .promo__pic {
+        margin: 0;
         margin-bottom: 40px;
         background-image: url(../../images/landing_promo_pic_small.png);
-        background-size: cover;
-        background-repeat: no-repeat;
     }
 }

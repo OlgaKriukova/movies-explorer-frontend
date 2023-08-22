@@ -43,12 +43,16 @@
 @media (max-width: 560px) {
     .title {
         margin: 0 14px;
-        margin-bottom: 70px;
+        margin-bottom: 60px;
+        padding-bottom: 28px;
         max-width: 668px;
-        border-bottom: 1px solid #000;
         font-size: 18px;
         letter-spacing: -0.72px;
     }
+}
+
+.title-border {
+    border-bottom: 1px solid #000;
 }
 
 .form {
@@ -120,7 +124,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    /* margin-bottom: 50px; */
 }
 
 .title-form {
@@ -142,6 +145,7 @@
 
 @media (max-width: 560px) {
     .title-form {
+        margin-top: 50px;
         margin-bottom: 80px;
         text-align: center;
     }
@@ -159,14 +163,19 @@
 @media (max-width: 560px) {
     .reg {
         margin: 0 auto;
-       margin-top: 222px;
-       
-       /* margin-top: auto; */
+        margin-top: 222px;
     }
 }
 
 .reg-login {
     margin-top: 200px;
+}
+
+@media (max-width: 560px) {
+    .reg-login {
+        margin: 0 auto;
+        margin-top: 290px;
+    }
 }
 
 .reg__button {

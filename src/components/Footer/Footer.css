@@ -20,7 +20,7 @@
 
 .footer__title {
     margin: 0;
-    padding-top: 60px;
+    padding-top: 80px;
     padding-bottom: 20px;
     margin-bottom: 20px;
     color: #8B8B8B;
@@ -35,6 +35,7 @@
 
 @media (max-width: 768px) {
     .footer__title {
+        padding-top: 60px;
     }
 }
 

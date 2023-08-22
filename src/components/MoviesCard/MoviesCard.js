@@ -1,4 +1,3 @@
-import filmSrc from "../../images/1.jpg";
 import iconDelete from "../../images/icon__delete.svg";
 import './MoviesCard.css';
 

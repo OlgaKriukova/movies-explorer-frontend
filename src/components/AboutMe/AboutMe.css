@@ -151,7 +151,6 @@
     max-width: 270px;
     max-height: 327px;
     border-radius: 10px;
-    background-color: antiquewhite;
 }
 
 @media (max-width: 1100px) {
@@ -164,7 +163,8 @@
 
 @media (max-width: 560px) {
     .about-me__photo {
-        margin: 0 auto;
+        margin: 0;
+
         max-width: 292px;
         max-height: 352px;
     }

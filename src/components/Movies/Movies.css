@@ -1,7 +1,6 @@
 .more {
     margin: 50px auto 80px auto;
     max-width: 1280px;
-    /* display: block; */
 }
 
 @media (max-width: 560px) {
@@ -37,6 +36,7 @@
 @media (max-width: 768px) {
     .more {
         margin-top: 50px;
+        padding-bottom: 20px;
 
     }
 }

@@ -11,8 +11,8 @@ export default function Login() {
 
 	return (
 		<>
+			<Header/>
 			<div className="form">
-				<Header/>
 				<h1 className="title-form">Рады видеть!</h1>
 				<form className="form__table">
 					<div className="form__list">
