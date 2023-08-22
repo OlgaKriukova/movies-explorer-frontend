@@ -1,6 +1,6 @@
 .footer {
     margin: 0 70px;
-    margin-top: auto;
+    /* margin-top: 125px; */
     max-width: 1140px;
 }
 
@@ -41,8 +41,8 @@
 
 @media (max-width: 560px) {
     .footer__title {
-        margin-bottom: 30px;
-        padding-top: 50px;
+        margin-bottom: 22px;
+        padding-top: 55px;
         padding-bottom: 21px;
         font-size: 12px;
     }

@@ -44,13 +44,12 @@
 }
 
 .header__img {
-    margin-top: 18px;
+    margin-top: 4px;
     margin-left: 70px;
 }
 
     @media (max-width: 768px) {
         .header__img {
-            margin-top: 10px;
             margin-left: 30px;
 
         }

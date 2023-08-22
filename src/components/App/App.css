@@ -51,8 +51,10 @@
     }
 }
 
-.title-border {
-    border-bottom: 1px solid #000;
+@media (max-width: 560px) {
+    .title-border {
+        border-bottom: 1px solid #000;
+    }
 }
 
 .form {

@@ -6,13 +6,13 @@
 
 @media (max-width: 768px) {
     .about-project {
-        margin-top: 87px;
+        margin-top: 90px;
     }
 }
 
 @media (max-width: 560px) {
     .about-project {
-        margin-top: 75px;
+        margin-top: 70px;
         margin-bottom: 67px;
     }
 }
@@ -104,7 +104,7 @@
 @media (max-width: 768px) {
     .time {
         margin: 0 50px;
-        margin-top: 93px;
+        margin-top: 88px;
         margin-bottom: 90px;
     }
 }

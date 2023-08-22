@@ -5,7 +5,7 @@
 
 @media (max-width: 768px) {
     .about-me__card {
-        margin: 66px 50px 91px 50px;
+        margin: 50px 50px 91px 50px;
     }
 }
 
@@ -31,7 +31,7 @@
 
 @media (max-width: 560px) {
     .about-me__text {
-     margin-top: 40px;
+     margin-top: 35px;
     }
 }
 
