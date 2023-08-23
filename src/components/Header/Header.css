@@ -1,0 +1,137 @@
+.header {
+    height: 74px;
+    display: flex;
+}
+
+    @media (max-width: 768px) {
+        .header {
+        }
+    }
+
+    @media (max-width: 560px) {
+        .header {
+        }
+    }
+
+.header-blue {
+    background-color: #073042;
+}
+
+.header-form {
+    margin: 0 auto;
+    margin-top: 200px;
+    display: flex;
+    justify-content: flex-start;
+    width: 396px;
+    height: auto;
+    }
+
+    @media (max-width: 560px) {
+        .header-form {
+            margin-top: 70px;
+            width: 278px;
+            justify-content: center;
+        }
+    }
+
+.header__logo {
+    text-decoration: none;
+    align-self: center;
+}
+
+.header__logo:hover {
+    opacity: 0.5;
+}
+
+.header__img {
+    margin-top: 4px;
+    margin-left: 70px;
+}
+
+    @media (max-width: 768px) {
+        .header__img {
+            margin-left: 30px;
+
+        }
+    }
+
+    @media (max-width: 560px) {
+        .header__img {
+            margin-left: 14px;
+        }
+    }
+
+.header__button-registy {
+    border: 0;
+    padding: 0;
+    margin-left: auto;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    color: #fff;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header__button-registy:hover {
+    opacity: 0.5;
+}
+
+    @media (max-width: 768px) {
+        .header__button-registy {
+        }
+    }
+
+    @media (max-width: 560px) {
+        .header__button-registy {
+            font-size: 10px;
+        }
+    }
+
+.header__link-registry {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header__button-enter {
+    width: 76px;
+    height: 32px;
+    margin: 21px 70px 21px 30px;
+    padding: 0;
+    border: 0;
+    border-radius: 3px;
+    background: #3DDC84;
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    cursor: pointer;
+}
+
+.header__button-enter:hover {
+    opacity: 0.5;
+}
+
+    @media (max-width: 768px) {
+        .header__button-enter {
+            margin-right: 30px;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .header__button-enter {
+            margin: 24px 14px;
+            width: 54px;
+            height: 26px;
+            font-size: 10px;
+        }
+    }
+
+.header__link-enter {
+    text-decoration: none;
+    color: #000;
+}

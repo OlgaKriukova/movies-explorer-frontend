@@ -1,0 +1,241 @@
+.header-movies {
+    margin-left: 44px;
+    margin-right: 70px;
+    display: flex;
+    width: 100%;
+    }
+
+@media (max-width: 768px) {
+    .header-movies {
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 560px) {
+    .header-movies {
+        margin-right: 10px;
+    }
+}
+
+.heder-burger {
+    display: none;
+    width: 47px;
+    height: 46px;
+    background-image: url(../../images/sidebar__icon.svg);
+    background-color: transparent;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 15px;
+    margin-right: 30px;
+    margin-bottom: 15px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.heder-burger:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .heder-burger {
+        display: flex;
+        margin-right: 25px;
+    }
+}
+
+@media (max-width: 560px) {
+    .heder-burger {
+        margin-top: 20px;
+        margin-right: 15px;
+        width: 35px;
+        height: 40px;
+    }
+}
+
+.nav-tab {
+    display: flex;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .nav-tab {
+        display: none;
+    }
+}
+
+.nav-tab__list {
+    margin-right: 16px;
+    align-self: center;
+    text-decoration: none;
+    color: #FFF;
+    text-align: right;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .nav-tab__list {
+        display: none;
+    }
+}
+
+.nav-tab__list_active {
+    border-bottom: 1px solid #FFF;
+
+}
+
+.nav-tab__account {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+@media (max-width: 768px) {
+    .nav-tab__account  {
+        display: none;
+    }
+}
+
+.nav-tab__icon {
+    margin-left: 7px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #313131;
+    background-image: url(../../images/icon__COLOR_icon-main.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav-tab__icon:hover {
+    opacity: 0.5;
+}
+
+.nav-tab__list-show {
+    color: #80808000;
+}
+
+@media  (max-width: 768px){
+    .nav-tab__list-show {
+        color: #FFF;
+    }
+}
+
+.nav-burger {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 105px;
+
+}
+
+@media  (max-height: 418px){
+    .nav-burger {
+        margin-top: 0px;
+    }
+}
+
+.nav-burger__list {
+    margin-bottom: 28px;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.nav-burger__list:hover {
+    opacity: 0.5;
+}
+
+.nav-burger__list_active {
+    padding-bottom: 4px;
+    align-items: center;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.nav-burger__list_active:hover {
+    opacity: 0.5;
+}
+
+.nav-burger__account {
+    margin-top: auto;
+    margin-bottom: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.nav-burger__icon {
+    margin-left: 7px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #313131;
+    background-image: url(../../images/icon__COLOR_icon-main.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.sidebar {
+    display: none;
+    flex-direction: column;
+    max-width: 520px;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #202020;
+    transition: 0.5s;
+    z-index: 5;
+}
+
+.sidebar_active {
+    display: flex;
+}
+
+.sidebar__icon {
+    margin-top: 22.4px;
+    margin-right: 22.4px;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-image: url(../../images/sidebar__close.svg);
+    background-size: cover;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.sidebar__icon:hover {
+    opacity: 0.5;
+}

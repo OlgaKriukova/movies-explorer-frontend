@@ -1,0 +1,145 @@
+.portfolio {
+    margin: 0 70px;
+
+}
+
+@media (max-width: 768px) {
+    .portfolio {
+        margin: 0 50px;
+    }
+}
+
+@media (max-width: 560px) {
+    .portfolio {
+        margin: 0 14px;
+    }
+}
+
+.portfolio__title {
+    margin: 0;
+    margin-bottom: 31px;
+    color: #8B8B8B;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+@media (max-width: 768px) {
+    .portfolio__title {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 560px) {
+    .portfolio__title {
+        margin-bottom: 21px;
+        color: #A0A0A0;
+        font-size: 14px;
+    }
+}
+
+.portfolio__list {
+    margin-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+    .portfolio__list {
+        margin-bottom: 90px;
+    }
+}
+
+@media (max-width: 560px) {
+    .portfolio__list {
+        margin-bottom: 70px;
+    }
+}
+
+.list {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.list__text {
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style-type: none;
+    border-bottom: 1px solid #424242;;
+}
+
+.list__text:hover {
+    opacity: 0.5;
+}
+
+.list__text:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 560px) {
+    .list__text {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+}
+
+.list__name {
+    margin: 0;
+    display: flex;
+    line-height: 50px;
+    margin-top: 19px;
+    margin-bottom: 20px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: -1.2px;
+}
+
+@media (max-width: 768px) {
+    .list__name {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 560px) {
+    .list__name {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.72px;
+    }
+}
+
+
+.list__site {
+    width: 100%;
+    text-decoration: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 60px;
+    letter-spacing: -1.2px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .list__site {
+        font-size: 28px;
+        letter-spacing: -0.72px;
+    }
+}
+
+@media (max-width: 560px) {
+    .list__site {
+        font-size: 18px;
+    }
+}

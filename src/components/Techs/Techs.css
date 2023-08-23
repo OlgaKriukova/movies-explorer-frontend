@@ -1,0 +1,134 @@
+.techs {
+    padding-top: 100px;
+    margin-bottom: 110px;
+    background: #272727;
+}
+
+@media (max-width: 768px) {
+    .techs {
+     padding-top: 88px;
+     margin-bottom: 80px;
+    }
+}
+
+@media (max-width: 560px) {
+    .techs {
+     padding-top: 60px;
+     margin-bottom: 70px;
+    }
+}
+
+.techs__title {
+    margin: 90px auto 26px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -2px;
+}
+
+@media (max-width: 768px) {
+    .techs__title {
+        margin: 80px auto 22px;
+
+    }
+}
+
+@media (max-width: 560px) {
+    .techs__title {
+        margin: 45px auto 24px;
+        font-size: 30px;
+        line-height: normal;
+        letter-spacing: -1.2px;
+    }
+}
+
+.techs__subtitle {
+    margin: 0 auto;
+    max-width: 460px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.56px;
+}
+
+@media (max-width: 768px) {
+    .techs__subtitle {
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: -0.48px;
+    }
+}
+
+@media (max-width: 560px) {
+    .techs__subtitle {
+        margin: 0 14px;
+        font-size: 11px;
+        line-height: 16px;
+        letter-spacing: -0.44px;
+    }
+}
+
+.techs__item {
+    margin: 100px auto 0;
+    padding-bottom: 100px;
+    max-width: 690px;
+    max-height: 60px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    column-gap: 10px;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .techs__item {
+        margin: 83px 60px 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .techs__item {
+        margin: 50px auto;
+        padding-bottom: 70px;
+        max-width: 178px;
+        max-height: 366px;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 10px;
+    }
+}
+
+.techs__item-text {
+    margin: 0;
+    padding-top: 21px;
+    padding-bottom: 22px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.56px;
+    border-radius: 10px;
+    background: #303030;
+}
+
+@media (max-width: 768px) {
+    .techs__item-text {
+        font-size: 12px;
+        letter-spacing: -0.48px;
+    }
+}
+
+@media (max-width: 560px) {
+    .techs__item-text {
+    }
+}

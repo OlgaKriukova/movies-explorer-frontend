@@ -1,0 +1,84 @@
+.card__img {
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+    height: 151px;
+    object-fit: cover;
+    z-index: 1
+}
+
+@media (max-width: 768px) {
+    .card__img {
+       height: 190px;
+    }
+}
+
+@media (max-width: 560px) {
+    .card__img {
+       height: 168px;
+    }
+}
+
+.card__movie-title {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.card__movie-like {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #424242;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.card__like {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-image: url(../../images/likeOff.svg);
+    background-color: transparent;
+    cursor: pointer;
+    background-size: cover;
+}
+
+.card__like:hover {
+    opacity: 0.5;
+}
+
+.card__delete {
+    margin: 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 50%;
+    background-color: #313131;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.card__delete:hover {
+    opacity: 0.5;
+}
+
+.card__movie-time {
+    margin-top: 6px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.card__like_active {
+    opacity: 1;
+    background-image: url(../../images/likeOn.svg);
+}

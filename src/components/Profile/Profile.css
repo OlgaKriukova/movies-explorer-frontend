@@ -1,0 +1,246 @@
+.profile-form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 410px;
+    min-height: 100vh;
+}
+
+@media (max-width: 560px) {
+    .profile-form {
+        max-width: 260px;
+    }
+}
+
+.title-form-profile {
+    margin: 0;
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 123px;
+    padding-top: 34px;
+    max-width: 396px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+@media (max-width: 768px) {
+    .title-form-profile{
+        margin-top: 200px;
+        padding-bottom: 96px;
+
+    }
+}
+
+@media (max-width: 560px) {
+    .title-form-profile{
+        margin-top: 40px;
+        padding-bottom: 80px;
+
+    }
+}
+
+.profile-form__list {
+    display: flex;
+
+}
+
+.profile-form__list:first-child {
+    margin-bottom: 17px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #424242;
+}
+
+.profile-form__label {
+    color: #8B8B8B;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.profile-form__input {
+    margin-left: auto;
+    width: 350px;
+    padding: 0;
+    border: 0;
+    text-align: right;
+    color: #fff;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #202020;
+}
+
+@media (max-width: 768px) {
+    .profile-form__input {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 350px) {
+    .profile-form__input {
+        width: 220px;
+    }
+}
+
+.profile-form__input-error {
+    margin-top: 6px;
+    color: #EE3465;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media (max-width: 768px) {
+    .profile-form__input-error {
+        font-size: 11px;
+    }
+}
+
+.prof {
+    margin: auto;
+    margin-top: 200px;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+@media (max-width: 768px) {
+    .prof {
+        margin-bottom: 40px;
+
+    }
+}
+
+@media (max-width: 560px) {
+    .prof {
+        margin: 0 auto;
+        margin-top: 360px;
+        margin-bottom: 40px;
+
+    }
+}
+
+.prof-form__error {
+    display: none;
+    color: #FF004C;
+    text-align: center;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.prof-form__error_active {
+    display: block;
+}
+
+.prof__button {
+    display: none;
+    margin-top: 20px;
+    padding: 0;
+    width: 396px;
+    height: 45px;
+    border-radius: 3px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background: #4285F4;
+    border: 0;
+    cursor: pointer;
+}
+
+.prof__button:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 560px) {
+    .prof__button {
+       width: 260px;
+
+    }
+}
+
+.prof__button_active {
+    display: block;
+}
+
+.prof__edit-exit {
+    display: none;
+    margin-top: 16px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.prof__edit-exit_active {
+    display: flex;
+}
+
+.prof__edit {
+    margin-right: 6px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.prof__edit:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 560px) {
+    .prof__edit {
+    font-size: 12px;
+    }
+}
+
+.prof__exit {
+    margin-top: 16px;
+    color: #EE3465;
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+@media (max-width: 560px) {
+    .prof__exit {
+    font-size: 12px;
+    }
+}
+
+.prof__exit:hover {
+    opacity: 0.5;
+}
+
+.prof-form__error_active {
+    opacity: 1;
+}
