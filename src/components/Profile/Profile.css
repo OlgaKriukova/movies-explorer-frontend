@@ -43,15 +43,15 @@
     }
 }
 
-.profile-form__list {
-    display: flex;
 
-}
-
-.profile-form__list:first-child {
+.profile-form__wrap:first-child {
     margin-bottom: 17px;
     padding-bottom: 16px;
     border-bottom: 1px solid #424242;
+}
+
+.profile-form__list {
+    display: flex;
 }
 
 .profile-form__label {
@@ -88,6 +88,10 @@
     .profile-form__input {
         width: 220px;
     }
+}
+
+.profile-form__error {
+    margin-bottom: 0;
 }
 
 .profile-form__input-error {

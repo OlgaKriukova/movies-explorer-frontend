@@ -108,7 +108,7 @@ function Profile(props) {
                     tabIndex={0}
                     onSubmit={handleSubmit}
                 >
-                    <div className="form__list">
+                    <div className="profile-form__wrap">
                         <div className="profile-form__list">
                             <label className="profile-form__label">
                                 Имя
@@ -124,11 +124,11 @@ function Profile(props) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <span className="form__error">
+                        <span className="form__error profile-form__error">
                             {changedValueNames.includes('name') ? formErrors.name : ''}
                         </span>
                     </div>
-                    <div className="form__list">
+                    <div className="profile-form__wrap      ">
                         <div className="profile-form__list">
                             <label className="profile-form__label">
                                 E-mail
@@ -137,7 +137,7 @@ function Profile(props) {
                                 disabled = {!isEditProfile}
                                 id="form-input-email"
                                 name="email"
-                                className="profile-form__input"
+                                className={`profile-form__input${formErrors.email ? " profile-form__input-error" : ""}`}
                                 placeholder="pochta@yandex.ru"
                                 value={formValues.email}
                                 onChange={handleChange}
