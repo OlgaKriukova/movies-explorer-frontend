@@ -8,7 +8,7 @@ function SavedMovies() {
   return (
     <>
       <Header
-              isShowNavigation={true}
+              isShowButtons={true}
               headerForm={'SavedMovies'}
           />
       <main>

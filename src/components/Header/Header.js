@@ -1,12 +1,17 @@
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Link, useNavigate } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.png";
 import './Header.css';
 
 function Header(props) {
+  const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
-  const headerClassName = `header ${!(props.isShowButtons||props.isShowNavigation) ? "header-form" : ""} ${(props.isBlue) ? "header-blue" : ""}`;
-  const headerImgClassName = `${(props.isShowButtons||props.isShowNavigation) && "header__img"}`;
+  const headerClassName = `header ${!(props.isShowButtons) ? "header-form" : ""} ${(props.isBlue) ? "header-blue" : ""}`;
+  const headerImgClassName = `${(props.isShowButtons) ? "header__img" : ""}`;
+
+console.log('headerImgClassName '+headerImgClassName);
 
 	function handleButtonRegisterClick() {
 		navigate("/signup", { replace: true });
@@ -23,7 +28,7 @@ function Header(props) {
             <img src={logo} alt="смайл" className={headerImgClassName} />
         </Link>
 
-        {props.isShowButtons && (
+        {(!currentUser.email&&props.isShowButtons) && (
           <>
             <button className="header__button-registy"
                     onClick={handleButtonRegisterClick}
@@ -37,7 +42,7 @@ function Header(props) {
             </button>
           </>)}
 
-        {props.isShowNavigation && (
+        {(currentUser.email&&props.isShowButtons) && (
           <>
             <Navigation
               headerForm={props.headerForm}

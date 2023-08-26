@@ -8,7 +8,7 @@ function Movies() {
   return (
     <>
         <Header
-                isShowNavigation={true}
+                isShowButtons={true}
                 headerForm={'Movies'}
         />
         <main>
