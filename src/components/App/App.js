@@ -13,15 +13,15 @@ import './App.css';
 
 function App() {
     const navigate = useNavigate();
-    const [email, setEmail] = useState("");
+    const [isNeedUpdateUser, setNeedUpdateUser] = useState(false);
+    const [isNeedClearUser, setNeedClearUser] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [isInRequest, setInRequest] = useState(false);
 
     useEffect(() => {
         mainApi.getUserInfo()
         .then((result) => {
-            setEmail(result.email);
-            //navigate("/", { replace: true });
+            setCurrentUser(result);
         })
         .catch((err) => {
             console.log("getUserInfo - catch - " + err);
@@ -29,6 +29,7 @@ function App() {
     }, []);
 
     useEffect(() => {
+/*
         if (email) {
             //Promise.all([mainApi.getUserInfo(), mainApi.getInitialCards()])
             Promise.all([mainApi.getUserInfo()])
@@ -46,60 +47,38 @@ function App() {
             setCurrentUser({})
             console.log("user logged off");
         }
-    }, [email]);
-
-    function handleLoginSubmit(email, password) {
-        if (!email || !password) {
-          console.log("Login - Error - No login data");
-          return;
+*/
+        if (isNeedUpdateUser) {
+            setNeedUpdateUser(false);
+            setInRequest(true);
+            Promise.all([mainApi.getUserInfo()])
+            .then(([user]) => {
+                setCurrentUser(user);
+            })
+            .catch((err) => {
+                console.log("get intitial data - catch - " + err);
+            })
+            .finally(() => {
+                setInRequest(false);
+            });
         }
 
-        mainApi.signin(email, password)
-          .then(() => {
-            console.log('setEmail(email) '+email);
-            setEmail(email);
-            navigate("/movies", { replace: true });
-          })
-          .catch((err) => {
+        if (isNeedClearUser) {
+            setCurrentUser({})
+            setNeedClearUser(false);
+            console.log("user logged off");
+        }
 
-            /*
-            setInfoTooltipData({
-              isSuccess: false,
-            });
-            setInfoTooltipOpen(true);
-            console.log("Login signin Error -" + err);
-            */
-          });
-      }
-
-    function handleUpdateUser(userInfo) {
-        //setisLoading(true);
-        mainApi.setUserInfo(userInfo)
-        .then((result) => {
-            console.log("api.setUserInfo - then - " + result);
-            setCurrentUser(result);
-        })
-        .catch((err) => {
-            console.log("api.setUserInfo - catch - " + err);
-        })
-        .finally(() => {
-            //setisLoading(false);
-        });
-    }
+    }, [isNeedUpdateUser,isNeedClearUser]);
 
     function handleLogOut() {
         mainApi.signout()
         .then(() => {
-            setEmail('');
+            setNeedClearUser(true);
             navigate("/", { replace: true });
           })
         .catch((err) => {
-            // setInfoTooltipData({
-            //   isSuccess: false,
-            // });
-            // setInfoTooltipOpen(true);
             console.log("Logout signout Error -" + err);
-
         });
     }
 
@@ -116,7 +95,7 @@ function App() {
                         path="/signin"
                         element={<Login
                             signin = {mainApi.signin}
-                            setEmail = {setEmail}
+                            setNeedUpdateUser = {setNeedUpdateUser}
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
                         />}
@@ -126,7 +105,7 @@ function App() {
                         element={<Register
                             signup = {mainApi.signup}
                             signin = {mainApi.signin}
-                            setEmail = {setEmail}
+                            setNeedUpdateUser = {setNeedUpdateUser}
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
                         />}
@@ -143,7 +122,7 @@ function App() {
                         path="/profile"
                         element={<Profile
                             setUserInfo = {mainApi.setUserInfo}
-                            setEmail = {setEmail}
+                            setNeedUpdateUser = {setNeedUpdateUser}
                             onLogOut = {handleLogOut}
                             //onUpdateUser = {handleUpdateUser}
                             isInRequest = {isInRequest}

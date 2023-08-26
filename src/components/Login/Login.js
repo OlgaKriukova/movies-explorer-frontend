@@ -56,7 +56,7 @@ function Login(props) {
 
         props.signin(formValues)
         .then(() => {
-            props.setEmail(formValues.email);
+            props.setNeedUpdateUser(true);
             navigate("/movies", { replace: true });
         })
         .catch((err) => {

@@ -80,7 +80,8 @@ function Profile(props) {
         props.setUserInfo(formValues)
         .then(() => {
             setSubmitError('');
-            props.setEmail(formValues.email);
+            props.setNeedUpdateUser(true);
+            setEditProfile(false);
         })
         .catch((err) => {
             if (err === 'Ошибка: 409') {
