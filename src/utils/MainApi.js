@@ -101,8 +101,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-    baseUrl: 'http://localhost:3001',
-    //baseUrl: 'https://api.diplomaok.nomoreparties.co',
+    baseUrl: process.env.REACT_APP_HOST_API,
 })
 
 export default mainApi;

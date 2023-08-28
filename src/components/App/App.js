@@ -76,6 +76,7 @@ function App() {
             console.log("user logged off");
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isNeedUpdateUser,isNeedClearUser]);
 
     function handleLogOut() {

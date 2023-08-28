@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import isEmail from 'validator/lib/isEmail';
 import Header from "../Header/Header";
 import './Register.css';
 
 function Register(props) {
-    const navigate = useNavigate();
 
     const initialValues = {name: '', email: '', password: '',};
     const [formValues, setFormValues] = useState(initialValues);

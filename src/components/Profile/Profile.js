@@ -80,10 +80,10 @@ function Profile(props) {
         props.setUserInfo(formValues)
         .then(() => {
             setSubmitError('');
-            props.setNeedUpdateUser(true);
+            currentUser.name = formValues.name;
+            currentUser.email = formValues.email;
             setEditProfile(false);
             setPopupText('Профиль сохранен');
-
         })
         .catch((err) => {
             if (err === 'Ошибка: 409') {
