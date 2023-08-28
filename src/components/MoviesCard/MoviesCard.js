@@ -2,6 +2,10 @@ import iconDelete from "../../images/icon__delete.svg";
 import './MoviesCard.css';
 
 function MoviesCard(props) {
+    let isLiked = false;
+    if (props.source==='remote') {
+        isLiked = props.savedCards.some((i) => i.movieId === props.card.movieId);
+    }
 
     function timeConvert(n) {
         const num = n;
@@ -20,6 +24,14 @@ function MoviesCard(props) {
         }
     }
 
+    function handleLikeClick() {
+        props.onCardLike(props.card);
+    }
+
+    function handleDeleteClick() {
+        props.onCardDelete(props.card);
+    }
+
     return (
         <figure className="movies-card-list__card card">
             <img
@@ -31,7 +43,11 @@ function MoviesCard(props) {
                 <div className="card__movie-like">
                     <p className="card__movie-title">{props.card.nameRU}</p>
                     {(props.source==='saved') && (
-                    <button type="button" className="card__delete">
+                    <button
+                        type="button"
+                        className="card__delete"
+                        onClick = {handleDeleteClick}
+                    >
                         <img
                             className="card__delete-img"
                             alt="Удалить карточку фильма"
@@ -40,7 +56,11 @@ function MoviesCard(props) {
                     </button>
                     )}
                     {(props.source==='remote') && (
-                        <button type="button" className="card__like" />
+                        <button
+                            type="button"
+                            className={`card__like${isLiked ? " card__like_active" : ""}`}
+                            onClick={handleLikeClick}
+                        />
                     )}
                 </div>
                 <p className="card__movie-time">{timeConvert(props.card.duration)}</p>

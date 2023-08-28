@@ -73,6 +73,19 @@ class MainApi {
         })
         .then(this._checkResponse);
     }
+
+    createMovie = (movie) => {
+        return fetch(this._baseUrl+'/movies', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(movie)
+        })
+        .then(this._checkResponse);
+    }
+
 }
 
 const mainApi = new MainApi({

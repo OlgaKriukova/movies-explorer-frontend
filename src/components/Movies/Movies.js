@@ -43,12 +43,12 @@ function Movies(props) {
     }
 
     useEffect(() => {
-        window.addEventListener('resize', handleResize);
-
-        const storedFilterValues = JSON.parse(localStorage.getItem('cards'));
-        if (storedFilterValues) {
-            setFilterValues (storedFilterValues);
+        const savedFilterValues = JSON.parse(localStorage.getItem('filterValues'));
+        if (savedFilterValues) {
+           setFilterValues(savedFilterValues);
+           loadCards();
         }
+        window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -131,8 +131,7 @@ function Movies(props) {
 
     const filterCards = () => {
         setFilteredCards(cards.filter(item => {
-            localStorage.setItem("cards", JSON.stringify(filterValues));
-
+            localStorage.setItem("filterValues", JSON.stringify(filterValues));
             if (filterValues.isShortMovie && item.duration > 40) {
                 return false;
             }
@@ -175,7 +174,6 @@ function Movies(props) {
     }, [isReadyToFilter]);
 
     useEffect(() => {
-setPopupOpen(true);
         setCountLoadedCards(countVisibleCards+countAddCards);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filteredCards]);
@@ -205,9 +203,11 @@ setPopupOpen(true);
                     onClose = {handlePopupClose}
                 />
                 <MoviesCardList
-                    source={"remote"}
+                    source={'remote'}
                     cards={filteredCards}
+                    savedCards={props.savedCards}
                     countVisibleCards={countVisibleCards}
+                    onCardLike={props.onCardLike}
                 />
 
                 <div className="more">

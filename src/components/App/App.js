@@ -17,14 +17,22 @@ function App() {
     const [isNeedClearUser, setNeedClearUser] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [isInRequest, setInRequest] = useState(false);
+    const [savedCards, setSavedCards] = useState([]);
+
 
     useEffect(() => {
         mainApi.getUserInfo()
         .then((result) => {
             setCurrentUser(result);
+            //Если пользователя удалось получить (кука была сохранена и актуальна)
+            //Получим список его сохраненных фильмов
+            return mainApi.getMovies();
+        })
+        .then((result) => {
+            setSavedCards(result);
         })
         .catch((err) => {
-            console.log("getUserInfo - catch - " + err);
+            console.log("Нет текущего пользователя");
             localStorage.removeItem('cards');
         });
     }, []);
@@ -84,6 +92,19 @@ function App() {
         });
     }
 
+    function handleCardLike(movie) {
+        console.log("likeCard");
+
+        mainApi
+          .createMovie(movie)
+          .then((movie) => {
+            setSavedCards([...savedCards, movie]);
+          })
+          .catch((err) => {
+            console.log("api.likeCard - catch - " + err);
+          });
+      }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
@@ -117,11 +138,19 @@ function App() {
                         element={<Movies
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
+                            savedCards = {savedCards}
+                            setSavedCards = {setSavedCards}
+                            onCardLike = {handleCardLike}
                         />}
                     />
                     <Route
                         path="/saved-movies"
-                        element={<SavedMovies/>}
+                        element={<SavedMovies
+                            isInRequest = {isInRequest}
+                            setInRequest = {setInRequest}
+                            savedCards = {savedCards}
+                            setSavedCards = {setSavedCards}
+                        />}
                     />
                     <Route
                         path="/profile"
