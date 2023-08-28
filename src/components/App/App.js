@@ -25,6 +25,7 @@ function App() {
         })
         .catch((err) => {
             console.log("getUserInfo - catch - " + err);
+            localStorage.removeItem('cards');
         });
     }, []);
 
@@ -75,6 +76,7 @@ function App() {
         mainApi.signout()
         .then(() => {
             setNeedClearUser(true);
+            localStorage.removeItem('cards');
             navigate("/", { replace: true });
           })
         .catch((err) => {
@@ -112,7 +114,10 @@ function App() {
                     />
                     <Route
                         path="/movies"
-                        element={<Movies/>}
+                        element={<Movies
+                            isInRequest = {isInRequest}
+                            setInRequest = {setInRequest}
+                        />}
                     />
                     <Route
                         path="/saved-movies"

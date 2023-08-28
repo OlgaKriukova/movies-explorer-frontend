@@ -36,7 +36,6 @@ class MainApi {
     };
 
     signout = () => {
-        console.log(`signout: ${this._baseUrl}/signout`);
         return fetch(`${this._baseUrl}/signout`, {
             method: 'DELETE',
             credentials: 'include'
@@ -45,7 +44,6 @@ class MainApi {
     };
 
     getUserInfo = () => {
-        console.log('getUserInfo - '+this._baseUrl+'/users/me');
         return fetch(this._baseUrl+'/users/me', {
             method: 'GET',
             credentials: 'include',
@@ -55,7 +53,6 @@ class MainApi {
     }
 
     setUserInfo = ({name, email}) => {
-        console.log('setUserInfo - '+this._baseUrl+'/users/me');
         return fetch(this._baseUrl+'/users/me', {
                      method: 'PATCH',
                      credentials: 'include',
@@ -65,6 +62,16 @@ class MainApi {
                      body: JSON.stringify({name, email})
                })
             .then(this._checkResponse);
+    }
+
+    getMovies = () => {
+        return fetch(this._baseUrl+'/movies', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+            }
+        })
+        .then(this._checkResponse);
     }
 }
 

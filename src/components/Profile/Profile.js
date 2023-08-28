@@ -3,6 +3,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 import isEmail from 'validator/lib/isEmail';
 import Header from "../Header/Header";
+import Popup from "../Popup/Popup";
 import './Profile.css';
 
 function Profile(props) {
@@ -14,6 +15,7 @@ function Profile(props) {
     const [isValid, setValid] = useState(false);
     const [submitError, setSubmitError] = useState('');
     const [isEditProfile, setEditProfile] = useState(false);
+    const [isPopupOpen, setPopupOpen] = useState(false);
     const profFormErrorClassName = `prof-form__error ${isEditProfile ? "prof-form__error_active" : ""}`;
     const profEditExitClassName = `prof__edit-exit ${!isEditProfile ? "prof__edit-exit_active" : ""}`;
 
@@ -82,6 +84,7 @@ function Profile(props) {
             setSubmitError('');
             props.setNeedUpdateUser(true);
             setEditProfile(false);
+            setPopupOpen(true);
         })
         .catch((err) => {
             if (err === 'Ошибка: 409') {
@@ -93,12 +96,22 @@ function Profile(props) {
         });
     }
 
+    const handlePopupClose = () => {
+        setPopupOpen(false);
+    }
+
     return (
         <>
             <Header
                 isShowButtons={true}
                 headerForm={'Profile'}
             />
+            <Popup
+                infoText = {'Профиль сохранен'}
+                isOpen = {isPopupOpen}
+                onClose = {handlePopupClose}
+            />
+
             <div className="profile-form">
                 <h1 className="title-form-profile">Привет, {currentUser.name}!</h1>
                 <form

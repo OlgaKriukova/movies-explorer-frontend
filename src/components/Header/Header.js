@@ -11,8 +11,6 @@ function Header(props) {
   const headerClassName = `header ${!(props.isShowButtons) ? "header-form" : ""} ${(props.isBlue) ? "header-blue" : ""}`;
   const headerImgClassName = `${(props.isShowButtons) ? "header__img" : ""}`;
 
-console.log('headerImgClassName '+headerImgClassName);
-
 	function handleButtonRegisterClick() {
 		navigate("/signup", { replace: true });
 	}
