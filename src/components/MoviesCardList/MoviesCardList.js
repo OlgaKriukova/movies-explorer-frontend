@@ -2,24 +2,24 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
 
 function MoviesCardList(props) {
-    let showedCards = [];
+    let showedMovies = [];
 
     if (props.source === 'remote') {
-        showedCards = props.cards?.slice(0, props.countVisibleCards);
+        showedMovies = props.movies?.slice(0, props.countVisibleMovies);
     } else {
-        showedCards = props.cards;
+        showedMovies = props.movies?.slice();
     }
 
     return (
             <section className="movies-card-list" aria-label="фото">
-            {showedCards.map((card) => (
+            {showedMovies.map((movie) => (
                 <MoviesCard
                     source={props.source}
-                    key={card._id}
-                    card={card}
-                    savedCards={props.savedCards}
-                    isLiked={true}
-                    onCardLike={props.onCardLike}
+                    key={movie._id}
+                    movie={movie}
+                    savedMovies={props.savedMovies}
+                    onMovieLike={props.onMovieLike}
+                    onMovieDelete={props.onMovieDelete}
                 />
             ))}
             </section>

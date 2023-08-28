@@ -1,13 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useNavigate } from "react-router-dom";
 import isEmail from 'validator/lib/isEmail';
 import Header from "../Header/Header";
 import Popup from "../Popup/Popup";
 import './Profile.css';
 
 function Profile(props) {
-    //const navigate = useNavigate();
     const currentUser = useContext(CurrentUserContext);
     const [formValues, setFormValues] = useState({name:'', email: ''});
     const [changedValueNames, setChangedValueNames] = useState([]);
@@ -15,7 +13,7 @@ function Profile(props) {
     const [isValid, setValid] = useState(false);
     const [submitError, setSubmitError] = useState('');
     const [isEditProfile, setEditProfile] = useState(false);
-    const [isPopupOpen, setPopupOpen] = useState(false);
+    const [popupText, setPopupText] = useState('');
     const profFormErrorClassName = `prof-form__error ${isEditProfile ? "prof-form__error_active" : ""}`;
     const profEditExitClassName = `prof__edit-exit ${!isEditProfile ? "prof__edit-exit_active" : ""}`;
 
@@ -84,7 +82,8 @@ function Profile(props) {
             setSubmitError('');
             props.setNeedUpdateUser(true);
             setEditProfile(false);
-            setPopupOpen(true);
+            setPopupText('Профиль сохранен');
+
         })
         .catch((err) => {
             if (err === 'Ошибка: 409') {
@@ -96,10 +95,6 @@ function Profile(props) {
         });
     }
 
-    const handlePopupClose = () => {
-        setPopupOpen(false);
-    }
-
     return (
         <>
             <Header
@@ -107,9 +102,8 @@ function Profile(props) {
                 headerForm={'Profile'}
             />
             <Popup
-                infoText = {'Профиль сохранен'}
-                isOpen = {isPopupOpen}
-                onClose = {handlePopupClose}
+                infoText = {popupText}
+                onClose = {() => {setPopupText('')}}
             />
 
             <div className="profile-form">

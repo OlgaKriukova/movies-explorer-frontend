@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Route, Routes, Navigate, useNavigate} from "react-router-dom";
+import { Route, Routes, useNavigate} from "react-router-dom";
 import mainApi from "../../utils/MainApi";
 import Main from "../Main/Main";
 import Login from "../Login/Login";
@@ -9,6 +9,9 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Popup from "../Popup/Popup";
+
 import './App.css';
 
 function App() {
@@ -17,10 +20,11 @@ function App() {
     const [isNeedClearUser, setNeedClearUser] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [isInRequest, setInRequest] = useState(false);
-    const [savedCards, setSavedCards] = useState([]);
-
+    const [savedMovies, setSavedMovies] = useState([]);
+    const [popupText, setPopupText] = useState('');
 
     useEffect(() => {
+        setInRequest(true);
         mainApi.getUserInfo()
         .then((result) => {
             setCurrentUser(result);
@@ -29,40 +33,34 @@ function App() {
             return mainApi.getMovies();
         })
         .then((result) => {
-            setSavedCards(result);
+            setSavedMovies(result);
         })
         .catch((err) => {
-            console.log("Нет текущего пользователя");
-            localStorage.removeItem('cards');
+            if (err ==='Ошибка: 401') {
+                console.log("Нет текущего пользователя "+ err);
+            } else {
+                setPopupText(err);
+            }
+            localStorage.removeItem('movies');
+            localStorage.removeItem('filterValues');
+        })
+        .finally(()=> {
+            setInRequest(false);
         });
     }, []);
 
     useEffect(() => {
-/*
-        if (email) {
-            //Promise.all([mainApi.getUserInfo(), mainApi.getInitialCards()])
-            Promise.all([mainApi.getUserInfo()])
-                //.then(([user, cards]) => {
-                .then(([user]) => {
-                    console.log('setCurrentUser');
-                    console.log(user);
-                    setCurrentUser(user)
-                    //setCards(cards)
-                })
-                .catch((err) => {
-                    console.log("get intitial data - catch - " + err);
-                });
-        } else {
-            setCurrentUser({})
-            console.log("user logged off");
-        }
-*/
         if (isNeedUpdateUser) {
             setNeedUpdateUser(false);
             setInRequest(true);
-            Promise.all([mainApi.getUserInfo()])
-            .then(([user]) => {
+            mainApi.getUserInfo()
+            .then((user) => {
                 setCurrentUser(user);
+                return mainApi.getMovies();
+            })
+            .then((result) => {
+                setSavedMovies(result);
+                navigate("/movies", { replace: true });
             })
             .catch((err) => {
                 console.log("get intitial data - catch - " + err);
@@ -81,34 +79,76 @@ function App() {
     }, [isNeedUpdateUser,isNeedClearUser]);
 
     function handleLogOut() {
+        setInRequest(true);
         mainApi.signout()
         .then(() => {
             setNeedClearUser(true);
-            localStorage.removeItem('cards');
+            localStorage.removeItem('movies');
+            localStorage.removeItem('filterValues');
             navigate("/", { replace: true });
           })
         .catch((err) => {
             console.log("Logout signout Error -" + err);
+        }).finally(()=> {
+            setInRequest(false);
         });
     }
 
-    function handleCardLike(movie) {
-        console.log("likeCard");
+    function handleMovieLike(movie) {
+        console.log("likeMovie movie.id = "+movie.movieId);
 
+        let savedMovieIdx = savedMovies.findIndex(item => item.movieId === movie.movieId);
+        console.log('savedMovieIdx = '+savedMovieIdx);
+
+        if (savedMovieIdx>-1) {
+            setInRequest(true);
+            mainApi
+                .deleteMovie(savedMovies[savedMovieIdx])
+                .then((deletedMovie) => {
+                    setSavedMovies(savedMovies.filter(item => item._id !== deletedMovie._id));
+                })
+                .catch((err) => {
+                    console.log("api.likeMovie - catch - " + err);
+                }).finally(()=> {
+                    setInRequest(false);
+                });
+        } else {
+            setInRequest(true);
+            mainApi
+                .createMovie(movie)
+                .then((savedMovie) => {
+                    setSavedMovies([...savedMovies, savedMovie]);
+                })
+                .catch((err) => {
+                    console.log("api.likeMovie - catch - " + err);
+                }).finally(()=> {
+                    setInRequest(false);
+                });
+        }
+    }
+
+    function handleMovieDelete(movie) {
+        setInRequest(true);
         mainApi
-          .createMovie(movie)
-          .then((movie) => {
-            setSavedCards([...savedCards, movie]);
-          })
-          .catch((err) => {
-            console.log("api.likeCard - catch - " + err);
-          });
-      }
+            .deleteMovie(movie)
+            .then((deletedMovie) => {
+                setSavedMovies(savedMovies.filter(item => item._id !== deletedMovie._id));
+            })
+            .catch((err) => {
+                console.log("api.deleteMovie - catch - " + err);
+            }).finally(()=> {
+                setInRequest(false);
+            });
+    }
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
                 <div className="page__container fonts">
+                <Popup
+                    infoText = {popupText}
+                    onClose = {() => {setPopupText('')}}
+                />
                 <Routes>
                     <Route
                         path="/"
@@ -135,30 +175,35 @@ function App() {
                     />
                     <Route
                         path="/movies"
-                        element={<Movies
-                            isInRequest = {isInRequest}
-                            setInRequest = {setInRequest}
-                            savedCards = {savedCards}
-                            setSavedCards = {setSavedCards}
-                            onCardLike = {handleCardLike}
-                        />}
+                        element={
+                            <ProtectedRoute
+                                element={Movies}
+                                isInRequest = {isInRequest}
+                                setInRequest = {setInRequest}
+                                savedMovies = {savedMovies}
+                                setSavedMovies = {setSavedMovies}
+                                onMovieLike = {handleMovieLike}
+                            />
+                        }
                     />
                     <Route
                         path="/saved-movies"
-                        element={<SavedMovies
+                        element={<ProtectedRoute
+                            element={SavedMovies}
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
-                            savedCards = {savedCards}
-                            setSavedCards = {setSavedCards}
+                            savedMovies = {savedMovies}
+                            setSavedMovies = {setSavedMovies}
+                            onMovieDelete = {handleMovieDelete}
                         />}
                     />
                     <Route
                         path="/profile"
-                        element={<Profile
+                        element={<ProtectedRoute
+                            element={Profile}
                             setUserInfo = {mainApi.setUserInfo}
                             setNeedUpdateUser = {setNeedUpdateUser}
                             onLogOut = {handleLogOut}
-                            //onUpdateUser = {handleUpdateUser}
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
                         />}

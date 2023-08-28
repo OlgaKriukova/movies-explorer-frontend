@@ -19,6 +19,10 @@
     }
 }
 
+.card__img:hover {
+    opacity: 0.5;
+}
+
 .card__movie-title {
     margin: 0;
     padding: 0;

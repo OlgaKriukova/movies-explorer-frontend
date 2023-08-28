@@ -4,7 +4,9 @@
     padding-top: 80px;
     border-top: 1px solid #424242;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    align-self: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 270px);
     gap: 30px 20px;
     }
 

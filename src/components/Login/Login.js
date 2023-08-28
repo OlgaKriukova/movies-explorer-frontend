@@ -57,7 +57,6 @@ function Login(props) {
         props.signin(formValues)
         .then(() => {
             props.setNeedUpdateUser(true);
-            navigate("/movies", { replace: true });
         })
         .catch((err) => {
             if (err === 'Ошибка: 401') {

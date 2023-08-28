@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-//import mainApi from "../../utils/MainApi";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import SearchForm from "../SearchForm/SearchForm";
@@ -7,24 +6,43 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import './SavedMovies.css';
 
 function SavedMovies(props) {
+    const [filteredMovies, setFilteredMovies] = useState([]);
     const [filterValues, setFilterValues] = useState({text: '', isShortMovie: false});
     const [isReadyToFilter, setReadyToFilter] = useState(false);
-//     const [cards, setCards] = useState([]);
-
-//     useEffect(() => {
-//         Promise.all([mainApi.getMovies()])
-//         .then(([cards]) => {
-//             setCards(cards);
-//         })
-//         .catch((err) => {
-//             console.log("get intitial data - catch - " + err);
-//         });
-//     }, []);
 
     const handleFindClick = (values) => {
-        setFilterValues(values);
+        setFilterValues({text: values.text, isShortMovie: values.isShortMovie});
         setReadyToFilter(true);
     }
+
+    function filterMovies (values) {
+        setFilteredMovies(props.savedMovies.filter(item => {
+            if (filterValues.isShortMovie && item.duration > 40) {
+                return false;
+            }
+            if (filterValues.text.length === 0) {
+                return true;
+            } else if (item.nameRU.toUpperCase().includes(filterValues.text.toUpperCase()) || item.nameEN.toUpperCase().includes(filterValues.text.toUpperCase())){
+                return true;
+            }
+
+            return false;
+        }));
+
+        setReadyToFilter(false);
+    }
+
+    useEffect(() => {
+        if (isReadyToFilter) {
+            filterMovies();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isReadyToFilter]);
+
+    useEffect(() => {
+        setReadyToFilter(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.savedMovies]);
 
     return (
         <>
@@ -36,12 +54,11 @@ function SavedMovies(props) {
             <SearchForm
                     onSubmit = {handleFindClick}
                     filterValues = {filterValues}
-                    setFilterValues = {setFilterValues}
             />
             <MoviesCardList
                 source={"saved"}
-                cards={props.savedCards}
-                savedCards={props.savedCards}
+                movies={filteredMovies}
+                onMovieDelete={props.onMovieDelete}
             />
         </main>
         <Footer/>

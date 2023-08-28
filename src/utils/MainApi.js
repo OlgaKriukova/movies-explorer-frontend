@@ -86,6 +86,18 @@ class MainApi {
         .then(this._checkResponse);
     }
 
+    deleteMovie = (movie) => {
+        return fetch(this._baseUrl+'/movies/'+movie._id, {
+            method: 'DELETE',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(movie)
+        })
+        .then(this._checkResponse);
+    }
+
 }
 
 const mainApi = new MainApi({

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import './SearchForm.css';
 
 function SearchForm(props) {
-    const [formValues, setFormValues] = useState({text: '', isShortMovie: true});
+    const [formValues, setFormValues] = useState({text: props.filterValues.text, isShortMovie: props.filterValues.isShortMovie});
 
     useEffect(() => {
         setFormValues(props.filterValues);

@@ -28,15 +28,15 @@ function Movies(props) {
     const INITIAL_CARD_COUNT_TWO = 8;
     const INITIAL_CARD_COUNT_ONE = 5;
 
-    const [cards, setCards] = useState([]);
-    const [filteredCards, setFilteredCards] = useState([]);
+    const [movies, setMovies] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState([]);
     const [clientWidth, setClientWidth] = useState(document.documentElement.clientWidth);
-    const [countLoadedCards, setCountLoadedCards] = useState(0);
-    const [countVisibleCards, setCountVisibleCards] = useState(0);
-    const [countAddCards, setCountAddCards] = useState(0);
+    const [countLoadedMovies, setCountLoadedMovies] = useState(0);
+    const [countVisibleMovies, setCountVisibleMovies] = useState(0);
+    const [countAddMovies, setCountAddMovies] = useState(0);
     const [isReadyToFilter, setReadyToFilter] = useState(false);
     const [filterValues, setFilterValues] = useState({text: '', isShortMovie: false});
-    const [isPopupOpen, setPopupOpen] = useState(false);
+    const [popupText, setPopupText] = useState('');
 
     const handleResize = () => {
         setTimeout(()=>{setClientWidth(document.documentElement.clientWidth)}, 1000);
@@ -46,7 +46,7 @@ function Movies(props) {
         const savedFilterValues = JSON.parse(localStorage.getItem('filterValues'));
         if (savedFilterValues) {
            setFilterValues(savedFilterValues);
-           loadCards();
+           loadMovies();
         }
         window.addEventListener('resize', handleResize);
 
@@ -57,80 +57,75 @@ function Movies(props) {
 
     useEffect(() => {
         let countRows = 0;
-        let countInitialCards = 0;
+        let countInitialMovies = 0;
         if (clientWidth >= RES_FOUR) {
             countRows = CARD_ROW_COUNT_FOUR;
-            countInitialCards = INITIAL_CARD_COUNT_FOUR;
-            setCountAddCards(CARD_ROW_ADD_FOUR);
+            countInitialMovies = INITIAL_CARD_COUNT_FOUR;
+            setCountAddMovies(CARD_ROW_ADD_FOUR);
         } else if (clientWidth >= RES_THREE) {
             countRows = CARD_ROW_COUNT_THREE;
-            countInitialCards = INITIAL_CARD_COUNT_THREE;
-            setCountAddCards(CARD_ROW_ADD_THREE);
+            countInitialMovies = INITIAL_CARD_COUNT_THREE;
+            setCountAddMovies(CARD_ROW_ADD_THREE);
         } else if (clientWidth >= RES_TWO) {
             countRows = CARD_ROW_COUNT_TWO;
-            countInitialCards = INITIAL_CARD_COUNT_TWO;
-            setCountAddCards(CARD_ROW_ADD_TWO);
+            countInitialMovies = INITIAL_CARD_COUNT_TWO;
+            setCountAddMovies(CARD_ROW_ADD_TWO);
         } else {
             countRows = CARD_ROW_COUNT_ONE;
-            countInitialCards = INITIAL_CARD_COUNT_ONE;
-            setCountAddCards(CARD_ROW_ADD_ONE);
+            countInitialMovies = INITIAL_CARD_COUNT_ONE;
+            setCountAddMovies(CARD_ROW_ADD_ONE);
         }
 
-        if (countLoadedCards ===0 ) {
-            setCountVisibleCards(0);
-        } else if (countLoadedCards < countInitialCards) {
-            setCountVisibleCards(countInitialCards);
+        if (countLoadedMovies ===0 ) {
+            setCountVisibleMovies(0);
+        } else if (countLoadedMovies < countInitialMovies) {
+            setCountVisibleMovies(countInitialMovies);
         } else {
-            setCountVisibleCards(Math.floor(countLoadedCards / countRows) * countRows);
+            setCountVisibleMovies(Math.floor(countLoadedMovies / countRows) * countRows);
         }
-    }, [clientWidth, countLoadedCards]);
+    }, [clientWidth, countLoadedMovies]);
 
-    function loadCards() {
-        if (cards.length === 0) {
-            const localCards = JSON.parse(localStorage.getItem('cards'));
+    function loadMovies() {
+        if (movies.length === 0) {
+            const localMovies = JSON.parse(localStorage.getItem('movies'));
 
-            if (localCards) {
-                console.log('localCards');
-                setCards(localCards);
+            if (localMovies) {
+                setMovies(localMovies);
             }
             else {
-                console.log('isInRequest');
                 props.setInRequest(true);
-                Promise.all([moviesApi.getMovies()])
-                .then(([movies]) => {
-                    const remoteCards = movies.map((movie) => {
-                        const card = {}
-                        card.country = movie.country;
-                        card.director = movie.director;
-                        card.duration = movie.duration;
-                        card.year = movie.year;
-                        card.description = movie.description;
-                        card.image = moviesApi.baseUrl+movie.image.url;
-                        card.trailerLink = movie.trailerLink;
-                        card.thumbnail = moviesApi.baseUrl+movie.image.formats.thumbnail.url;
-                        card.nameRU = movie.nameRU;
-                        card.nameEN = movie.nameEN;
-                        card.movieId = movie.id;
-                        return card;
+                moviesApi.getMovies()
+                .then((resultMovies) => {
+                    const remoteMovies = resultMovies.map((resulMovie) => {
+                        const movie = {}
+                        movie.country = resulMovie.country;
+                        movie.director = resulMovie.director;
+                        movie.duration = resulMovie.duration;
+                        movie.year = resulMovie.year;
+                        movie.description = resulMovie.description;
+                        movie.image = moviesApi.baseUrl+resulMovie.image.url;
+                        movie.trailerLink = resulMovie.trailerLink;
+                        movie.thumbnail = moviesApi.baseUrl+resulMovie.image.formats.thumbnail.url;
+                        movie.nameRU = resulMovie.nameRU;
+                        movie.nameEN = resulMovie.nameEN;
+                        movie.movieId = resulMovie.id;
+                        return movie;
                     })
-                    console.log('remoteCards');
-                    setCards(remoteCards);
-                    localStorage.setItem("cards", JSON.stringify(remoteCards));
+                    setMovies(remoteMovies);
+                    localStorage.setItem('movies', JSON.stringify(remoteMovies));
                 })
                 .catch((err) => {
-                    setPopupOpen(true);
-                    console.log("get intitial data - catch - " + err);
+                    setPopupText('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
                 })
                 .finally(() => {
-                    console.log('isInRequest false');
                     props.setInRequest(false);
                 });
             }
         }
     }
 
-    const filterCards = () => {
-        setFilteredCards(cards.filter(item => {
+    const filterMovies = () => {
+        setFilteredMovies(movies.filter(item => {
             localStorage.setItem("filterValues", JSON.stringify(filterValues));
             if (filterValues.isShortMovie && item.duration > 40) {
                 return false;
@@ -148,38 +143,37 @@ function Movies(props) {
     }
 
     const handleFindClick = (values) => {
-        if (cards.length === 0) {
-            loadCards();
+        if (movies.length === 0) {
+            loadMovies();
         }
 
         setFilterValues(values);
         setReadyToFilter(true);
     }
 
-    const handleMoreClick = (evt) => {
-        console.log('more');
-        setCountLoadedCards(countVisibleCards+countAddCards);
+    const handleMoreClick = () => {
+        setCountLoadedMovies(countVisibleMovies+countAddMovies);
     }
 
     useEffect(() => {
         setReadyToFilter(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [cards]);
+    }, [movies]);
 
     useEffect(() => {
         if (isReadyToFilter) {
-            filterCards();
+            filterMovies();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isReadyToFilter]);
 
     useEffect(() => {
-        setCountLoadedCards(countVisibleCards+countAddCards);
+        setCountLoadedMovies(countVisibleMovies+countAddMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [filteredCards]);
+    }, [filteredMovies]);
 
     const handlePopupClose = () => {
-        setPopupOpen(false);
+        popupText('');
     }
 
     return (
@@ -192,27 +186,25 @@ function Movies(props) {
                 <SearchForm
                     onSubmit = {handleFindClick}
                     filterValues = {filterValues}
-                    setFilterValues = {setFilterValues}
                 />
                 <Preloader
                     isInRequest = {props.isInRequest}
                 />
                 <Popup
-                    infoText = {'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'}
-                    isOpen = {isPopupOpen}
+                    infoText = {popupText}
                     onClose = {handlePopupClose}
                 />
                 <MoviesCardList
                     source={'remote'}
-                    cards={filteredCards}
-                    savedCards={props.savedCards}
-                    countVisibleCards={countVisibleCards}
-                    onCardLike={props.onCardLike}
+                    movies={filteredMovies}
+                    savedMovies={props.savedMovies}
+                    countVisibleMovies={countVisibleMovies}
+                    onMovieLike={props.onMovieLike}
                 />
 
                 <div className="more">
                     <button
-                        className={`more__button${(filteredCards.length === 0 || filteredCards.length <= countVisibleCards)? " more__button-none" : ""}`}
+                        className={`more__button${(filteredMovies.length === 0 || filteredMovies.length <= countVisibleMovies)? " more__button-none" : ""}`}
                         onClick={handleMoreClick}
                     >
                         Еще

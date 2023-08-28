@@ -3,8 +3,9 @@ import './MoviesCard.css';
 
 function MoviesCard(props) {
     let isLiked = false;
+
     if (props.source==='remote') {
-        isLiked = props.savedCards.some((i) => i.movieId === props.card.movieId);
+        isLiked = props.savedMovies.some((i) => i.movieId === props.movie.movieId);
     }
 
     function timeConvert(n) {
@@ -25,23 +26,26 @@ function MoviesCard(props) {
     }
 
     function handleLikeClick() {
-        props.onCardLike(props.card);
+        props.onMovieLike(props.movie);
     }
 
     function handleDeleteClick() {
-        props.onCardDelete(props.card);
+        props.onMovieDelete(props.movie);
     }
 
     return (
         <figure className="movies-card-list__card card">
-            <img
-                src={props.card.thumbnail}
-                className="card__img"
-                alt="облложка фильма"
-            />
+            <a href={props.movie.trailerLink} target="_blank" className="list__site" rel="noreferrer">
+                <img
+                    src={props.movie.thumbnail}
+                    className="card__img"
+                    alt="облложка фильма"
+                />
+            </a>
+
             <figcaption className="card__caption">
                 <div className="card__movie-like">
-                    <p className="card__movie-title">{props.card.nameRU}</p>
+                    <p className="card__movie-title">{props.movie.nameRU}</p>
                     {(props.source==='saved') && (
                     <button
                         type="button"
@@ -63,7 +67,7 @@ function MoviesCard(props) {
                         />
                     )}
                 </div>
-                <p className="card__movie-time">{timeConvert(props.card.duration)}</p>
+                <p className="card__movie-time">{timeConvert(props.movie.duration)}</p>
             </figcaption>
         </figure>
     );

@@ -73,7 +73,6 @@ function Register(props) {
         })
         .then(() => {
             props.setNeedUpdateUser(true);
-            navigate("/movies", { replace: true });
         })
         .catch((err) => {
             if (err === 'Ошибка: 409') {
