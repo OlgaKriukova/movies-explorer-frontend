@@ -7,53 +7,48 @@ import './SavedMovies.css';
 
 function SavedMovies(props) {
     const [filteredMovies, setFilteredMovies] = useState([]);
-    const [filterValues, setFilterValues] = useState({text: '', isShortMovie: false});
-    const [isReadyToFilter, setReadyToFilter] = useState(false);
 
-    const handleFindClick = (values) => {
-        setFilterValues({text: values.text, isShortMovie: values.isShortMovie});
-        setReadyToFilter(true);
-    }
-
-    function filterMovies (values) {
-        setFilteredMovies(props.savedMovies.filter(item => {
-            if (filterValues.isShortMovie && item.duration > 40) {
+    function filterMovies ({text, isShortMovie}, moviesForFilter) {
+        props.setPopupText('');
+        const filteredMovieslocal = moviesForFilter.filter(item => {
+            if (isShortMovie && item.duration > 40) {
                 return false;
             }
-            if (filterValues.text.length === 0) {
+            if (text.length === 0) {
                 return true;
-            } else if (item.nameRU.toUpperCase().includes(filterValues.text.toUpperCase()) || item.nameEN.toUpperCase().includes(filterValues.text.toUpperCase())){
+            } else if (item.nameRU.toUpperCase().includes(text.toUpperCase()) || item.nameEN.toUpperCase().includes(text.toUpperCase())){
                 return true;
             }
 
             return false;
-        }));
+        });
 
-        setReadyToFilter(false);
+        if (filteredMovieslocal.length === 0) {
+            props.setPopupText('Ничего не найдено');
+        }
+        setFilteredMovies(filteredMovieslocal);
+    }
+
+    const handleFindClick = (values) => {
+        filterMovies(values, props.savedMovies);
     }
 
     useEffect(() => {
-        if (isReadyToFilter) {
-            filterMovies();
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isReadyToFilter]);
-
-    useEffect(() => {
-        setReadyToFilter(true);
+        filterMovies({text: '', isShortMovie: false}, props.savedMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.savedMovies]);
 
     return (
         <>
-        <Header
+            <Header
                 isShowButtons={true}
                 headerForm={'SavedMovies'}
             />
         <main>
             <SearchForm
                     onSubmit = {handleFindClick}
-                    filterValues = {filterValues}
+                    isUseSavedFilterValues = {false}
+                    isFinded = {true}
             />
             <MoviesCardList
                 source={"saved"}

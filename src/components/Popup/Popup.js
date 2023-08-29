@@ -5,7 +5,6 @@ function Popup(props) {
     let infoText = props.infoText;
 
     function handleClickOutside(evt) {
-        console.log(evt.target);
         props.onClose();
     }
 

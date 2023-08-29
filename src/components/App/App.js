@@ -176,15 +176,14 @@ function App() {
                     />
                     <Route
                         path="/movies"
-                        element={
-                            <ProtectedRoute
-                                element={Movies}
-                                isInRequest = {isInRequest}
-                                setInRequest = {setInRequest}
-                                savedMovies = {savedMovies}
-                                setSavedMovies = {setSavedMovies}
-                                onMovieLike = {handleMovieLike}
-                            />
+                        element={<ProtectedRoute
+                            element={Movies}
+                            isInRequest = {isInRequest}
+                            setInRequest = {setInRequest}
+                            savedMovies = {savedMovies}
+                            onMovieLike = {handleMovieLike}
+                            setPopupText = {setPopupText}
+                        />
                         }
                     />
                     <Route
@@ -194,8 +193,8 @@ function App() {
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
                             savedMovies = {savedMovies}
-                            setSavedMovies = {setSavedMovies}
                             onMovieDelete = {handleMovieDelete}
+                            setPopupText = {setPopupText}
                         />}
                     />
                     <Route

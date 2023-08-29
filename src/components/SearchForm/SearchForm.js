@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
+import {getSavedfilterValues} from "../../utils/util";
 import './SearchForm.css';
 
 function SearchForm(props) {
-    const [formValues, setFormValues] = useState({text: props.filterValues.text, isShortMovie: props.filterValues.isShortMovie});
+    const [formValues, setFormValues] = useState({text: '', isShortMovie: false});
 
     useEffect(() => {
-         setFormValues({text: props.filterValues.text, isShortMovie: props.filterValues.isShortMovie});
-    }, [props.filterValues]);
+        if (props.isUseSavedFilterValues) {
+            const savedFilterValues = getSavedfilterValues();
+            setFormValues({text: savedFilterValues.text, isShortMovie: savedFilterValues.isShortMovie});
+        }
+    // }, [props.filterValues]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleChange = (evt) => {
         const { name, value, checked } = evt.target;
@@ -30,8 +36,11 @@ function SearchForm(props) {
     };
 
     const handleisShortMovieClick = (evt) => {
-        const { checked } = evt.target;
-        props.onSubmit({text: formValues.text, isShortMovie: checked});
+        // По чекбоксу ищем только если карточки уже были найдены
+        if (props.isFinded) {
+            const { checked } = evt.target;
+            props.onSubmit({text: formValues.text, isShortMovie: checked});
+        }
     };
 
 
