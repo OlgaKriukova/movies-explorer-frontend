@@ -129,21 +129,30 @@ function Movies(props) {
     }
 
     const filterMovies = () => {
-        setFilteredMovies(movies.filter(item => {
-            localStorage.setItem("filterValues", JSON.stringify(filterValues));
-            if (filterValues.isShortMovie && item.duration > 40) {
+        setCountVisibleMovies(0);
+        setCountLoadedMovies(0);
+        if (isReadyToFilter) {
+            const fMovies = movies.filter(item => {
+                localStorage.setItem("filterValues", JSON.stringify(filterValues));
+                if (filterValues.isShortMovie && item.duration > 40) {
+                    return false;
+                }
+                if (filterValues.text.length === 0) {
+                    return true;
+                } else if (item.nameRU.toUpperCase().includes(filterValues.text.toUpperCase()) || item.nameEN.toUpperCase().includes(filterValues.text.toUpperCase())){
+                    return true;
+                }
+
                 return false;
-            }
-            if (filterValues.text.length === 0) {
-                return true;
-            } else if (item.nameRU.toUpperCase().includes(filterValues.text.toUpperCase()) || item.nameEN.toUpperCase().includes(filterValues.text.toUpperCase())){
-                return true;
-            }
+            });
 
-            return false;
-        }));
+            if (fMovies.length === 0) {
+                setPopupText('Ничего не найдено');
+            }
+            setFilteredMovies(fMovies);
 
-        setReadyToFilter(false);
+            setReadyToFilter(false);
+        }
     }
 
     const handleFindClick = (values) => {
@@ -176,10 +185,6 @@ function Movies(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filteredMovies]);
 
-    const handlePopupClose = () => {
-        popupText('');
-    }
-
     return (
         <>
             <Header
@@ -196,7 +201,7 @@ function Movies(props) {
                 />
                 <Popup
                     infoText = {popupText}
-                    onClose = {handlePopupClose}
+                    onClose = {() => {setPopupText('')}}
                 />
                 <MoviesCardList
                     source={'remote'}

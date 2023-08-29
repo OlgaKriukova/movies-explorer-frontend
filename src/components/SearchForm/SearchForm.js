@@ -5,7 +5,7 @@ function SearchForm(props) {
     const [formValues, setFormValues] = useState({text: props.filterValues.text, isShortMovie: props.filterValues.isShortMovie});
 
     useEffect(() => {
-        setFormValues(props.filterValues);
+         setFormValues({text: props.filterValues.text, isShortMovie: props.filterValues.isShortMovie});
     }, [props.filterValues]);
 
     const handleChange = (evt) => {
@@ -28,6 +28,12 @@ function SearchForm(props) {
         evt.preventDefault();
         props.onSubmit(formValues);
     };
+
+    const handleisShortMovieClick = (evt) => {
+        const { checked } = evt.target;
+        props.onSubmit({text: formValues.text, isShortMovie: checked});
+    };
+
 
     return (
         <section className="block-search" aria-label="строка поиска">
@@ -59,6 +65,7 @@ function SearchForm(props) {
                 id="short-film"
                 name="isShortMovie"
                 onChange={handleChange}
+                onClick={handleisShortMovieClick}
                 checked={formValues.isShortMovie}
             />
             <label htmlFor="short-film" className="block-search__label">

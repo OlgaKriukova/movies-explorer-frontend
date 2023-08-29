@@ -1,11 +1,25 @@
+import { useEffect } from "react";
 import './Popup.css';
 
 function Popup(props) {
+    let infoText = props.infoText;
 
+    function handleClickOutside(evt) {
+        console.log(evt.target);
+        props.onClose();
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div
-            className={`popup${props.infoText ? " popup_opened" : ""}`}
+            className={`popup${infoText ? " popup_opened" : ""}`}
         >
             <div className="popup__container popup__container_type_input">
                 <button
