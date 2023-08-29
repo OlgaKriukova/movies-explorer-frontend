@@ -37,6 +37,7 @@ function Movies(props) {
     const [isReadyToFilter, setReadyToFilter] = useState(false);
     const [filterValues, setFilterValues] = useState({text: '', isShortMovie: false});
     const [popupText, setPopupText] = useState('');
+    const [isShowPreloader, setShowPreloader] = useState(false);
 
     const handleResize = () => {
         setTimeout(()=>{setClientWidth(document.documentElement.clientWidth)}, 1000);
@@ -95,6 +96,7 @@ function Movies(props) {
             }
             else {
                 props.setInRequest(true);
+                setShowPreloader(true);
                 moviesApi.getMovies()
                 .then((resultMovies) => {
                     const remoteMovies = resultMovies.map((resulMovie) => {
@@ -120,6 +122,7 @@ function Movies(props) {
                 })
                 .finally(() => {
                     props.setInRequest(false);
+                    setShowPreloader(false);
                 });
             }
         }
@@ -189,7 +192,7 @@ function Movies(props) {
                     filterValues = {filterValues}
                 />
                 <Preloader
-                    isInRequest = {props.isInRequest}
+                    isShowPreloader = {isShowPreloader}
                 />
                 <Popup
                     infoText = {popupText}
