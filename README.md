@@ -5,3 +5,12 @@
 
 # Макет dark-1 
 https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=1-6015&mode=design&t=sgDL1FpjMQCxuYE0-0
+
+## Ссылки на проект
+
+IP 158.160.119.240
+
+Frontend https://diplomaok.nomoreparties.co
+
+## Ссылка на пул реквест
+https://github.com/OlgaKriukova/movies-explorer-frontend/pull/2
