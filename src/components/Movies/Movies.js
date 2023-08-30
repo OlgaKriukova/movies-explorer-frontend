@@ -6,7 +6,6 @@ import Footer from "../Footer/Footer";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
-import Popup from "../Popup/Popup";
 import './Movies.css';
 
 function Movies(props) {
@@ -31,20 +30,90 @@ function Movies(props) {
 
     const [movies, setMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
-    const [clientWidth, setClientWidth] = useState(document.documentElement.clientWidth);
-    const [countLoadedMovies, setCountLoadedMovies] = useState(0);
-    const [countVisibleMovies, setCountVisibleMovies] = useState(0);
-    const [countAddMovies, setCountAddMovies] = useState(0);
+    const [clientWidthStated, setClientWidthStated] = useState(0);
+    const [countVisibleMoviesStated, setCountVisibleMoviesStated] = useState(0);
     const [isShowPreloader, setShowPreloader] = useState(false);
     const [isFinded, setFinded] = useState(false);
+    const [isMount, setMount] = useState('');
+
+    let clientWidth = 0;
+
+    function setClientWidth(width) {
+        if (width!==clientWidth) {
+            clientWidth = width;
+            setClientWidthStated(width);
+        }
+    }
+
+    function setCountVisibleMovies(count) {
+        if (isMount) {
+            setCountVisibleMoviesStated(count);
+            localStorage.setItem('countVisibleMovies', JSON.stringify({count}));
+        }
+    }
 
     const handleResize = () => {
         setTimeout(()=>{setClientWidth(document.documentElement.clientWidth)}, 1000);
     }
 
+    function getCountRows(currentWidth) {
+        let countRows  = CARD_ROW_COUNT_ONE;
+
+        if (currentWidth >= RES_FOUR) {
+            countRows = CARD_ROW_COUNT_FOUR;
+        } else if (currentWidth >= RES_THREE) {
+            countRows = CARD_ROW_COUNT_THREE;
+        } else if (currentWidth >= RES_TWO) {
+            countRows = CARD_ROW_COUNT_TWO;
+        }
+
+        return countRows;
+    }
+
+    function getCountInitialMovies(currentWidth) {
+        const countRows = getCountRows(currentWidth);
+        let count = INITIAL_CARD_COUNT_ONE;
+
+        if (countRows === 4) {
+            count = INITIAL_CARD_COUNT_FOUR;
+        } else if (countRows === 3) {
+            count = INITIAL_CARD_COUNT_THREE;
+        } else if (countRows === 2) {
+            count = INITIAL_CARD_COUNT_TWO;
+        }
+        return count;
+    }
+
+    function getCountAddMovies(currentWidth) {
+        const countRows = getCountRows(currentWidth);
+
+        if (countRows === 4) {
+            return CARD_ROW_ADD_FOUR;
+        } else if (countRows === 3) {
+            return CARD_ROW_ADD_THREE;
+        } else if (countRows === 2) {
+            return CARD_ROW_ADD_TWO;
+        }
+        return CARD_ROW_ADD_ONE;
+    }
+
+    function getCountVisibleMovies(currentWidth) {
+        let count = 0;
+        if (countVisibleMoviesStated === 0) {
+            count = getCountInitialMovies(currentWidth);
+        } else {
+            count = Math.floor(countVisibleMoviesStated / getCountRows(currentWidth)) * getCountRows(currentWidth);
+        }
+
+        if (count < getCountInitialMovies(currentWidth)) {
+            count = getCountInitialMovies(currentWidth);
+        }
+        return count;
+    }
+
     function filterMovies ({text, isShortMovie}, moviesForFilter) {
-        setCountVisibleMovies(0);
-        setCountLoadedMovies(0);
+        const count = getCountInitialMovies(document.documentElement.clientWidth);
+        setCountVisibleMovies(count);
 
         const filteredMovieslocal = moviesForFilter.filter(item => {
             props.setPopupText('');
@@ -123,51 +192,34 @@ function Movies(props) {
         }
     }
 
-    const handleMoreClick = () => {
-        setCountLoadedMovies(countVisibleMovies+countAddMovies);
+    function handleMoreClick() {
+        const count = countVisibleMoviesStated+getCountAddMovies(document.documentElement.clientWidth);
+        setCountVisibleMovies(count);
     }
 
     useEffect(() => {
-        let countRows = 0;
-        let countInitialMovies = 0;
-        if (clientWidth >= RES_FOUR) {
-            countRows = CARD_ROW_COUNT_FOUR;
-            countInitialMovies = INITIAL_CARD_COUNT_FOUR;
-            setCountAddMovies(CARD_ROW_ADD_FOUR);
-        } else if (clientWidth >= RES_THREE) {
-            countRows = CARD_ROW_COUNT_THREE;
-            countInitialMovies = INITIAL_CARD_COUNT_THREE;
-            setCountAddMovies(CARD_ROW_ADD_THREE);
-        } else if (clientWidth >= RES_TWO) {
-            countRows = CARD_ROW_COUNT_TWO;
-            countInitialMovies = INITIAL_CARD_COUNT_TWO;
-            setCountAddMovies(CARD_ROW_ADD_TWO);
-        } else {
-            countRows = CARD_ROW_COUNT_ONE;
-            countInitialMovies = INITIAL_CARD_COUNT_ONE;
-            setCountAddMovies(CARD_ROW_ADD_ONE);
+        if (isMount) {
+            setCountVisibleMovies(getCountVisibleMovies(document.documentElement.clientWidth));
         }
-
-        if (countLoadedMovies ===0 ) {
-            setCountVisibleMovies(0);
-        } else if (countLoadedMovies < countInitialMovies) {
-            setCountVisibleMovies(countInitialMovies);
-        } else {
-            setCountVisibleMovies(Math.floor(countLoadedMovies / countRows) * countRows);
-        }
-    }, [clientWidth, countLoadedMovies]);
-
-    useEffect(() => {
-        setCountLoadedMovies(countVisibleMovies+countAddMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [filteredMovies]);
+    }, [clientWidthStated]);
 
     useEffect(() => {
         const savedFilterValues = JSON.parse(localStorage.getItem('filterValues'));
         if (savedFilterValues) {
-           loadMovies();
+            loadMovies();
         }
         window.addEventListener('resize', handleResize);
+
+        const countVisibleMovies= JSON.parse(localStorage.getItem('countVisibleMovies'));
+        if (countVisibleMovies) {
+            setCountVisibleMoviesStated(countVisibleMovies.count);
+        } else {
+            setCountVisibleMoviesStated(getCountInitialMovies(document.documentElement.clientWidth));
+        }
+
+        setClientWidth(document.documentElement.clientWidth);
+        setMount(true);
 
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -194,13 +246,13 @@ function Movies(props) {
                     source={'remote'}
                     movies={filteredMovies}
                     savedMovies={props.savedMovies}
-                    countVisibleMovies={countVisibleMovies}
+                    countVisibleMovies={countVisibleMoviesStated}
                     onMovieLike={props.onMovieLike}
                 />
 
                 <div className="more">
                     <button
-                        className={`more__button${(filteredMovies.length === 0 || filteredMovies.length <= countVisibleMovies)? " more__button-none" : ""}`}
+                        className={`more__button${(filteredMovies.length === 0 || filteredMovies.length <= countVisibleMoviesStated)? " more__button-none" : ""}`}
                         onClick={handleMoreClick}
                     >
                         Еще

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Route, Routes, useNavigate} from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import mainApi from "../../utils/MainApi";
 import Main from "../Main/Main";
 import Login from "../Login/Login";
@@ -22,6 +22,11 @@ function App() {
     const [isInRequest, setInRequest] = useState(false);
     const [savedMovies, setSavedMovies] = useState([]);
     const [popupText, setPopupText] = useState('');
+    let location = useLocation();
+
+    useEffect(() => {
+        console.log(location);
+    }, [location]);
 
     useEffect(() => {
         setInRequest(true);
@@ -178,6 +183,7 @@ function App() {
                         path="/movies"
                         element={<ProtectedRoute
                             element={Movies}
+                            isRegistered = {currentUser?.email ? true : false}
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
                             savedMovies = {savedMovies}
@@ -190,6 +196,7 @@ function App() {
                         path="/saved-movies"
                         element={<ProtectedRoute
                             element={SavedMovies}
+                            isRegistered = {currentUser?.email ? true : false}
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
                             savedMovies = {savedMovies}
@@ -201,6 +208,7 @@ function App() {
                         path="/profile"
                         element={<ProtectedRoute
                             element={Profile}
+                            isRegistered = {currentUser?.email ? true : false}
                             setUserInfo = {mainApi.setUserInfo}
                             setNeedUpdateUser = {setNeedUpdateUser}
                             onLogOut = {handleLogOut}
