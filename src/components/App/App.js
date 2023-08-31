@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import mainApi from "../../utils/MainApi";
 import Main from "../Main/Main";
 import Login from "../Login/Login";
@@ -22,11 +22,7 @@ function App() {
     const [isInRequest, setInRequest] = useState(false);
     const [savedMovies, setSavedMovies] = useState([]);
     const [popupText, setPopupText] = useState('');
-    let location = useLocation();
-
-    useEffect(() => {
-        console.log(location);
-    }, [location]);
+    const [isAppMounted, setAppMounted] = useState(false);
 
     useEffect(() => {
         setInRequest(true);
@@ -51,11 +47,12 @@ function App() {
         })
         .finally(()=> {
             setInRequest(false);
+            setAppMounted(true);
         });
     }, []);
 
     useEffect(() => {
-        if (isNeedUpdateUser) {
+        if (isNeedUpdateUser&&isAppMounted) {
             setNeedUpdateUser(false);
             setInRequest(true);
             mainApi.getUserInfo()
@@ -75,7 +72,7 @@ function App() {
             });
         }
 
-        if (isNeedClearUser) {
+        if (isNeedClearUser&&isAppMounted) {
             setCurrentUser({})
             setNeedClearUser(false);
             console.log("user logged off");
@@ -162,7 +159,10 @@ function App() {
                     />
                     <Route
                         path="/signin"
-                        element={<Login
+                        element={<ProtectedRoute
+                            isAppMounted = {isAppMounted}
+                            isRegistered = {currentUser?.email ? false : true}
+                            element={Login}
                             signin = {mainApi.signin}
                             setNeedUpdateUser = {setNeedUpdateUser}
                             isInRequest = {isInRequest}
@@ -171,7 +171,10 @@ function App() {
                     />
                     <Route
                         path="/signup"
-                        element={<Register
+                        element={<ProtectedRoute
+                            isAppMounted = {isAppMounted}
+                            isRegistered = {currentUser?.email ? false : true}
+                            element={Register}
                             signup = {mainApi.signup}
                             signin = {mainApi.signin}
                             setNeedUpdateUser = {setNeedUpdateUser}
@@ -183,12 +186,14 @@ function App() {
                         path="/movies"
                         element={<ProtectedRoute
                             element={Movies}
+                            isAppMounted = {isAppMounted}
                             isRegistered = {currentUser?.email ? true : false}
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
                             savedMovies = {savedMovies}
                             onMovieLike = {handleMovieLike}
                             setPopupText = {setPopupText}
+                            state={currentUser}
                         />
                         }
                     />
@@ -196,6 +201,7 @@ function App() {
                         path="/saved-movies"
                         element={<ProtectedRoute
                             element={SavedMovies}
+                            isAppMounted = {isAppMounted}
                             isRegistered = {currentUser?.email ? true : false}
                             isInRequest = {isInRequest}
                             setInRequest = {setInRequest}
@@ -208,6 +214,7 @@ function App() {
                         path="/profile"
                         element={<ProtectedRoute
                             element={Profile}
+                            isAppMounted = {isAppMounted}
                             isRegistered = {currentUser?.email ? true : false}
                             setUserInfo = {mainApi.setUserInfo}
                             setNeedUpdateUser = {setNeedUpdateUser}
